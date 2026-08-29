@@ -17,7 +17,7 @@
 ## 🇧🇷 Português
 
 **Disciplina:** Algoritmos e Pensamento Computacional
-**Aluno:** [Nome do Aluno]
+**Aluno:** Piêtro Bitencourt Nunes
 
 ### Objetivo
 
@@ -72,7 +72,7 @@ Conforme exigido pela atividade, o projeto contém:
 ## 🇺🇸 English
 
 **Course:** Algorithms and Computational Thinking
-**Student:** [Student Name]
+**Student:** Piêtro Bitencourt Nunes
 
 ### Objective
 
