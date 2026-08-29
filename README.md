@@ -7,6 +7,7 @@
 ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Status](https://img.shields.io/badge/status-em%20andamento-yellow?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
 
 **[🇧🇷 Português](#-português)** • **[🇺🇸 English](#-english)**
 
@@ -32,11 +33,14 @@ Este diretório reúne as **atividades avaliativas** da disciplina de **Algoritm
 
 ```
 desenvolvimento-de-algoritmo-e-pensamento-computacional/
+├── LICENSE
+├── README.md
 └── calculadora-flowgorithm/
     ├── Calculadora_Universal.fprg
-    ├── LICENSE
     └── README.md
 ```
+
+A licença [MIT](./LICENSE) na raiz vale para todas as atividades deste repositório.
 
 ---
 
@@ -58,8 +62,11 @@ This directory gathers the **graded assignments** for the **Algorithms and Compu
 
 ```
 desenvolvimento-de-algoritmo-e-pensamento-computacional/
+├── LICENSE
+├── README.md
 └── calculadora-flowgorithm/
     ├── Calculadora_Universal.fprg
-    ├── LICENSE
     └── README.md
 ```
+
+The [MIT](./LICENSE) license at the root applies to all assignments in this repository.
