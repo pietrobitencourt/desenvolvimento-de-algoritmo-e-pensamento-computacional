@@ -1,0 +1,927 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Calculadora Universal"/>
+        <attribute name="authors" value="lalab"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2026-08-30 08:12:30 "/>
+        <attribute name="created" value="bGFsYWI7TEFQVE9QLVJSUFJWRkFOOzIwMjYtMDgtMjQ7IjA3OjQ2OjI5ICI7Mjg0OQ=="/>
+        <attribute name="edited" value="bGFsYWI7TEFQVE9QLVJSUFJWRkFOOzIwMjYtMDgtMjg7IjA3OjUyOjUyICI7MztQSUVUUk9CSVRFTkNPVVJUTlVORTtERjAxLUxBQjA1LTE2OzIwMjYtMDgtMjQ7IjA4OjEyOjUyICI7Q2FsY3VsYWRvcmEgVW5pdmVyc2FsIHYuQmV0YS5mcHJnOzk3MDQ="/>
+        <attribute name="edited" value="bGFsYWI7TEFQVE9QLVJSUFJWRkFOOzIwMjYtMDgtMzA7IjA4OjEyOjMwICI7MjM7Mjk5Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="opcaoCalculadora" type="Integer" array="False" size=""/>
+            <output expression="&quot;Escolha a Calculadora: [1] Calculadora de IMC | [2] Calculadora de &#193;rea | [3] Calculadora de Tabuada (Soma, Subtra&#231;&#227;o, Multiplica&#231;&#227;o, Divis&#227;o, Pot&#234;ncia) | [4] Par ou &#205;mpar | [5] Compara&#231;&#227;o entre Valores | [6] M&#233;dia Aritm&#233;tica | [7] Porcentagem | [8] Regra de Tr&#234;s Simples | [9] Juros Simples | [10] Desconto | [11] Convers&#227;o de Temperatura | [12] Conversor de Unidades (Comprimento, &#193;rea, Volume, Massa, Capacidade) | [13] Trigonometria (Seno, Cosseno, Tangente) | | [0] Sair&quot;" newline="True"/>
+            <input variable="opcaoCalculadora"/>
+            <while expression="opcaoCalculadora &lt; 0 or opcaoCalculadora &gt; 13">
+                <output expression="&quot;Escolha inexistente! Tente novamente..&quot;" newline="True"/>
+                <output expression="&quot;Escolha a Calculadora: [1] Calculadora de IMC | [2] Calculadora de &#193;rea | [3] Calculadora de Tabuada (Soma, Subtra&#231;&#227;o, Multiplica&#231;&#227;o, Divis&#227;o, Pot&#234;ncia) | [4] Par ou &#205;mpar | [5] Compara&#231;&#227;o entre Valores | [6] M&#233;dia Aritm&#233;tica | [7] Porcentagem | [8] Regra de Tr&#234;s Simples | [9] Juros Simples | [10] Desconto | [11] Convers&#227;o de Temperatura | [12] Conversor de Unidades (Comprimento, &#193;rea, Volume, Massa, Capacidade) | [13] Trigonometria (Seno, Cosseno, Tangente) | | [0] Sair&quot;" newline="True"/>
+                <input variable="opcaoCalculadora"/>
+            </while>
+            <if expression="opcaoCalculadora = 0">
+                <then>
+                    <output expression="&quot;Encerrando o programa!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <if expression="opcaoCalculadora = 1">
+                        <then>
+                            <declare name="imc, peso, altura" type="Real" array="False" size=""/>
+                            <output expression="&quot;Digite o seu peso (Kg): &quot;" newline="True"/>
+                            <input variable="peso"/>
+                            <output expression="&quot;Digite a sua altura (m): &quot;" newline="True"/>
+                            <input variable="altura"/>
+                            <assign variable="imc" expression="peso / (altura ^ 2)"/>
+                            <output expression="&quot;O IMC para o peso &quot; &amp; peso &amp; &quot; e altura &quot; &amp; altura &amp; &quot; &#233;: &quot; &amp; ToFixed(imc, 2)" newline="True"/>
+                            <if expression="imc &lt; 18.5">
+                                <then>
+                                    <output expression="&quot;Classifica&#231;&#227;o: Abaixo do Peso&quot;" newline="True"/>
+                                </then>
+                                <else>
+                                    <if expression="imc &lt;= 24.9">
+                                        <then>
+                                            <output expression="&quot;Classifica&#231;&#227;o: Peso Normal&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <if expression="imc &lt;= 29.9">
+                                                <then>
+                                                    <output expression="&quot;Classifica&#231;&#227;o: Excesso  de Peso&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="imc &lt;= 34.9">
+                                                        <then>
+                                                            <output expression="&quot;Classifica&#231;&#227;o: Obesidade Grau I&quot;" newline="True"/>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="imc &lt;= 39.9">
+                                                                <then>
+                                                                    <output expression="&quot;Classifica&#231;&#227;o: Obesidade Grau II&quot;" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <output expression="&quot;Classifica&#231;&#227;o: Obesidade M&#243;rbida&quot;" newline="True"/>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </then>
+                        <else>
+                            <if expression="opcaoCalculadora = 2">
+                                <then>
+                                    <declare name="opcaoArea" type="Integer" array="False" size=""/>
+                                    <declare name="area, base, altura, raio, diagonalMaior, diagonalMenor, lado" type="Real" array="False" size=""/>
+                                    <output expression="&quot;Escolha a figura geom&#233;trica: [1] Quadrado | [2] Tri&#226;ngulo | [3] C&#237;rculo | [4] Losango&quot;" newline="True"/>
+                                    <input variable="opcaoArea"/>
+                                    <if expression="opcaoArea = 1">
+                                        <then>
+                                            <output expression="&quot;Digite o valor do lado do quadrado (em u.m):&quot;" newline="True"/>
+                                            <input variable="lado"/>
+                                            <assign variable="area" expression="lado * lado"/>
+                                            <output expression="&quot;A &#225;rea do quadrado &#233;: &quot; &amp; ToFixed(area, 2) &amp; &quot; u.m&#178;&quot;" newline="True"/>
+                                        </then>
+                                        <else>
+                                            <if expression="opcaoArea = 2">
+                                                <then>
+                                                    <output expression="&quot;Digite a base do tri&#226;ngulo (em u.m):&quot;" newline="True"/>
+                                                    <input variable="base"/>
+                                                    <output expression="&quot;Digite a altura do tri&#226;ngulo (em u.m):&quot;" newline="True"/>
+                                                    <input variable="altura"/>
+                                                    <assign variable="area" expression="(base * altura) / 2"/>
+                                                    <output expression="&quot;A &#225;rea do tri&#226;ngulo &#233;: &quot; &amp; ToFixed(area, 2) &amp; &quot; u.m&#178;&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="opcaoArea = 3">
+                                                        <then>
+                                                            <output expression="&quot;Digite o raio do c&#237;rculo (em u.m):&quot;" newline="True"/>
+                                                            <input variable="raio"/>
+                                                            <assign variable="area" expression="3.14 * (raio ^ 2)"/>
+                                                            <output expression="&quot;A &#225;rea do c&#237;rculo &#233;: &quot; &amp; ToFixed(area, 2) &amp; &quot; u.m&#178;&quot;" newline="True"/>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="opcaoArea = 4">
+                                                                <then>
+                                                                    <output expression="&quot;Digite a diagonal maior do losango (em u.m):&quot;" newline="True"/>
+                                                                    <input variable="diagonalMaior"/>
+                                                                    <output expression="&quot;Digite a diagonal menor do losango (em u.m):&quot;" newline="True"/>
+                                                                    <input variable="diagonalMenor"/>
+                                                                    <assign variable="area" expression="(diagonalMaior * diagonalMenor) / 2"/>
+                                                                    <output expression="&quot;A &#225;rea do losango &#233;: &quot; &amp; ToFixed(area, 2) &amp; &quot; u.m&#178;&quot;" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe..&quot;" newline="True"/>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </then>
+                                <else>
+                                    <if expression="opcaoCalculadora = 3">
+                                        <then>
+                                            <declare name="opcaoTabuada" type="Integer" array="False" size=""/>
+                                            <declare name="num1, num2, resultadoTabuada" type="Real" array="False" size=""/>
+                                            <declare name="expoente" type="Integer" array="False" size=""/>
+                                            <output expression="&quot;Escolha a opera&#231;&#227;o: [1] Soma | [2] Subtra&#231;&#227;o | [3] Multiplica&#231;&#227;o | [4] Divis&#227;o | [5] Pot&#234;ncia | [0] para sair.&quot;" newline="True"/>
+                                            <input variable="opcaoTabuada"/>
+                                            <while expression="opcaoTabuada &lt; 0 or opcaoTabuada &gt; 5">
+                                                <output expression="&quot;Erro! Essa op&#231;&#227;o n&#227;o existe.&quot;" newline="True"/>
+                                                <output expression="&quot;Escolha a opera&#231;&#227;o: [1] Soma | [2] Subtra&#231;&#227;o | [3] Multiplica&#231;&#227;o | [4] Divis&#227;o | [5] Pot&#234;ncia | [0] para sair.&quot;" newline="True"/>
+                                                <input variable="opcaoTabuada"/>
+                                            </while>
+                                            <if expression="opcaoTabuada = 0">
+                                                <then>
+                                                    <output expression="&quot;Fim do programa!&quot;" newline="True"/>
+                                                </then>
+                                                <else>
+                                                    <if expression="opcaoTabuada = 1">
+                                                        <then>
+                                                            <output expression="&quot;Digite o primeiro n&#250;mero: &quot;" newline="True"/>
+                                                            <input variable="num1"/>
+                                                            <output expression="&quot;Digite o segundo n&#250;mero: &quot;" newline="True"/>
+                                                            <input variable="num2"/>
+                                                            <assign variable="resultadoTabuada" expression="num1 + num2"/>
+                                                            <output expression="&quot;A soma &#233;: &quot; &amp; ToFixed(resultadoTabuada, 2)" newline="True"/>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="opcaoTabuada = 2">
+                                                                <then>
+                                                                    <output expression="&quot;Digite o primeiro n&#250;mero: &quot;" newline="True"/>
+                                                                    <input variable="num1"/>
+                                                                    <output expression="&quot;Digite o segundo n&#250;mero: &quot;" newline="True"/>
+                                                                    <input variable="num2"/>
+                                                                    <assign variable="resultadoTabuada" expression="num1 - num2"/>
+                                                                    <output expression="&quot;A subtra&#231;&#227;o &#233;: &quot; &amp; ToFixed(resultadoTabuada, 2)" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <if expression="opcaoTabuada = 3">
+                                                                        <then>
+                                                                            <output expression="&quot;Digite o primeiro n&#250;mero: &quot;" newline="True"/>
+                                                                            <input variable="num1"/>
+                                                                            <output expression="&quot;Digite o segundo n&#250;mero: &quot;" newline="True"/>
+                                                                            <input variable="num2"/>
+                                                                            <assign variable="resultadoTabuada" expression="num1 * num2"/>
+                                                                            <output expression="&quot;A multiplica&#231;&#227;o &#233;: &quot; &amp; ToFixed(resultadoTabuada, 2)" newline="True"/>
+                                                                        </then>
+                                                                        <else>
+                                                                            <if expression="opcaoTabuada = 4">
+                                                                                <then>
+                                                                                    <output expression="&quot;Digite o numerador: &quot;" newline="True"/>
+                                                                                    <input variable="num1"/>
+                                                                                    <output expression="&quot;Digite o denominador: &quot;" newline="True"/>
+                                                                                    <input variable="num2"/>
+                                                                                    <while expression="num2 = 0">
+                                                                                        <output expression="&quot;Erro: divis&#227;o por zero n&#227;o &#233; permitida.&quot;" newline="True"/>
+                                                                                        <output expression="&quot;Digite o denominador: &quot;" newline="True"/>
+                                                                                        <input variable="num2"/>
+                                                                                    </while>
+                                                                                    <assign variable="resultadoTabuada" expression="num1 / num2"/>
+                                                                                    <output expression="&quot;A divis&#227;o &#233;: &quot; &amp; ToFixed(resultadoTabuada, 2)" newline="True"/>
+                                                                                </then>
+                                                                                <else>
+                                                                                    <if expression="opcaoTabuada = 5">
+                                                                                        <then>
+                                                                                            <output expression="&quot;Digite a base: &quot;" newline="True"/>
+                                                                                            <input variable="num1"/>
+                                                                                            <output expression="&quot;Digite o expoente: &quot;" newline="True"/>
+                                                                                            <input variable="expoente"/>
+                                                                                            <assign variable="resultadoTabuada" expression="num1 ^ expoente"/>
+                                                                                            <output expression="&quot;A pot&#234;ncia &#233;: &quot; &amp; ToFixed(resultadoTabuada, 2)" newline="True"/>
+                                                                                        </then>
+                                                                                        <else>
+                                                                                            <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe.&quot;" newline="True"/>
+                                                                                        </else>
+                                                                                    </if>
+                                                                                </else>
+                                                                            </if>
+                                                                        </else>
+                                                                    </if>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </then>
+                                        <else>
+                                            <if expression="opcaoCalculadora = 4">
+                                                <then>
+                                                    <declare name="numero, resto" type="Integer" array="False" size=""/>
+                                                    <output expression="&quot;Digite um n&#250;mero inteiro: &quot;" newline="True"/>
+                                                    <input variable="numero"/>
+                                                    <assign variable="resto" expression="numero Mod 2"/>
+                                                    <if expression="resto = 0">
+                                                        <then>
+                                                            <output expression="numero &amp; &quot; &#233; PAR.&quot;" newline="True"/>
+                                                        </then>
+                                                        <else>
+                                                            <output expression="numero &amp; &quot; &#233; &#205;MPAR.&quot;" newline="True"/>
+                                                        </else>
+                                                    </if>
+                                                </then>
+                                                <else>
+                                                    <if expression="opcaoCalculadora = 5">
+                                                        <then>
+                                                            <declare name="valor1, valor2" type="Real" array="False" size=""/>
+                                                            <output expression="&quot;Digite o primeiro valor: &quot;" newline="True"/>
+                                                            <input variable="valor1"/>
+                                                            <output expression="&quot;Digite o segundo valor: &quot;" newline="True"/>
+                                                            <input variable="valor2"/>
+                                                            <if expression="valor1 &gt; valor2">
+                                                                <then>
+                                                                    <output expression="valor1 &amp; &quot; &#233; maior que &quot; &amp; valor2" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <if expression="valor1 &lt; valor2">
+                                                                        <then>
+                                                                            <output expression="valor2 &amp; &quot; &#233; maior que &quot; &amp; valor1" newline="True"/>
+                                                                        </then>
+                                                                        <else>
+                                                                            <output expression="&quot;Os valores s&#227;o iguais.&quot;" newline="True"/>
+                                                                        </else>
+                                                                    </if>
+                                                                </else>
+                                                            </if>
+                                                        </then>
+                                                        <else>
+                                                            <if expression="opcaoCalculadora = 6">
+                                                                <then>
+                                                                    <declare name="nota1, nota2, nota3, media" type="Real" array="False" size=""/>
+                                                                    <output expression="&quot;Digite a primeira nota: &quot;" newline="True"/>
+                                                                    <input variable="nota1"/>
+                                                                    <output expression="&quot;Digite a segunda nota: &quot;" newline="True"/>
+                                                                    <input variable="nota2"/>
+                                                                    <output expression="&quot;Digite a terceira nota: &quot;" newline="True"/>
+                                                                    <input variable="nota3"/>
+                                                                    <assign variable="media" expression="(nota1 + nota2 + nota3) / 3"/>
+                                                                    <output expression="&quot;A m&#233;dia &#233;: &quot; &amp; ToFixed(media, 2)" newline="True"/>
+                                                                </then>
+                                                                <else>
+                                                                    <if expression="opcaoCalculadora = 7">
+                                                                        <then>
+                                                                            <declare name="valorPercentual, percentual, resultadoPorcentagem" type="Real" array="False" size=""/>
+                                                                            <output expression="&quot;Digite o valor: &quot;" newline="True"/>
+                                                                            <input variable="valorPercentual"/>
+                                                                            <output expression="&quot;Digite o percentual (%): &quot;" newline="True"/>
+                                                                            <input variable="percentual"/>
+                                                                            <assign variable="resultadoPorcentagem" expression="(valorPercentual * percentual) / 100"/>
+                                                                            <output expression="percentual &amp; &quot;% de &quot; &amp; valorPercentual &amp; &quot; &#233;: &quot; &amp; ToFixed(resultadoPorcentagem, 2)" newline="True"/>
+                                                                        </then>
+                                                                        <else>
+                                                                            <if expression="opcaoCalculadora = 8">
+                                                                                <then>
+                                                                                    <declare name="a, b, c, x" type="Real" array="False" size=""/>
+                                                                                    <output expression="&quot;Digite o valor de A: &quot;" newline="True"/>
+                                                                                    <input variable="a"/>
+                                                                                    <while expression="a = 0">
+                                                                                        <output expression="&quot;Erro: o valor de A n&#227;o pode ser zero.&quot;" newline="True"/>
+                                                                                        <output expression="&quot;Digite o valor de A: &quot;" newline="True"/>
+                                                                                        <input variable="a"/>
+                                                                                    </while>
+                                                                                    <output expression="&quot;Digite o valor de B: &quot;" newline="True"/>
+                                                                                    <input variable="b"/>
+                                                                                    <output expression="&quot;Digite o valor de C: &quot;" newline="True"/>
+                                                                                    <input variable="c"/>
+                                                                                    <assign variable="x" expression="(b * c) / a"/>
+                                                                                    <output expression="&quot;O valor de X &#233;: &quot; &amp; ToFixed(x, 2)" newline="True"/>
+                                                                                </then>
+                                                                                <else>
+                                                                                    <if expression="opcaoCalculadora = 9">
+                                                                                        <then>
+                                                                                            <declare name="capital, taxa, tempo, juros, montante" type="Real" array="False" size=""/>
+                                                                                            <output expression="&quot;Digite o capital (R$): &quot;" newline="True"/>
+                                                                                            <input variable="capital"/>
+                                                                                            <output expression="&quot;Digite a taxa de juros (% ao m&#234;s): &quot;" newline="True"/>
+                                                                                            <input variable="taxa"/>
+                                                                                            <output expression="&quot;Digite o tempo (em meses): &quot;" newline="True"/>
+                                                                                            <input variable="tempo"/>
+                                                                                            <assign variable="juros" expression="(capital * taxa * tempo) / 100"/>
+                                                                                            <assign variable="montante" expression="capital + juros"/>
+                                                                                            <output expression="&quot;Juros: R$ &quot; &amp; ToFixed(juros, 2)" newline="True"/>
+                                                                                            <output expression="&quot;Montante final: R$ &quot; &amp; ToFixed(montante, 2)" newline="True"/>
+                                                                                        </then>
+                                                                                        <else>
+                                                                                            <if expression="opcaoCalculadora = 10">
+                                                                                                <then>
+                                                                                                    <declare name="precoOriginal, percentualDesconto, valorDesconto, precoFinal" type="Real" array="False" size=""/>
+                                                                                                    <output expression="&quot;Digite o pre&#231;o original (R$): &quot;" newline="True"/>
+                                                                                                    <input variable="precoOriginal"/>
+                                                                                                    <output expression="&quot;Digite o percentual de desconto (%): &quot;" newline="True"/>
+                                                                                                    <input variable="percentualDesconto"/>
+                                                                                                    <assign variable="valorDesconto" expression="(precoOriginal * percentualDesconto) / 100"/>
+                                                                                                    <assign variable="precoFinal" expression="precoOriginal - valorDesconto"/>
+                                                                                                    <output expression="&quot;Desconto: R$ &quot; &amp; ToFixed(valorDesconto, 2)" newline="True"/>
+                                                                                                    <output expression="&quot;Pre&#231;o final: R$ &quot; &amp; ToFixed(precoFinal, 2)" newline="True"/>
+                                                                                                </then>
+                                                                                                <else>
+                                                                                                    <if expression="opcaoCalculadora = 11">
+                                                                                                        <then>
+                                                                                                            <declare name="opcaoTemp" type="Integer" array="False" size=""/>
+                                                                                                            <declare name="temperatura, resultadoTemp" type="Real" array="False" size=""/>
+                                                                                                            <output expression="&quot;Escolha: [1] Celsius &#8594; Fahrenheit | [2] Fahrenheit &#8594; Celsius | [0] para sair&quot;" newline="True"/>
+                                                                                                            <input variable="opcaoTemp"/>
+                                                                                                            <while expression="opcaoTemp &lt; 0 or opcaoTemp &gt; 2">
+                                                                                                                <output expression="&quot;Op&#231;&#227;o errada ou inexistente! Tente novamente&quot;" newline="True"/>
+                                                                                                                <output expression="&quot;Escolha: [1] Celsius &#8594; Fahrenheit | [2] Fahrenheit &#8594; Celsius | [0] para sair&quot;" newline="True"/>
+                                                                                                                <input variable="opcaoTemp"/>
+                                                                                                            </while>
+                                                                                                            <if expression="opcaoTemp = 0">
+                                                                                                                <then>
+                                                                                                                    <output expression="&quot;Fim do programa!&quot;" newline="True"/>
+                                                                                                                </then>
+                                                                                                                <else>
+                                                                                                                    <if expression="opcaoTemp = 1">
+                                                                                                                        <then>
+                                                                                                                            <output expression="&quot;Digite a temperatura em Celsius: &quot;" newline="True"/>
+                                                                                                                            <input variable="temperatura"/>
+                                                                                                                            <assign variable="resultadoTemp" expression="(temperatura * 9 / 5) + 32"/>
+                                                                                                                            <output expression="&quot;Temperatura em Fahrenheit: &quot; &amp; ToFixed(resultadoTemp, 2)" newline="True"/>
+                                                                                                                        </then>
+                                                                                                                        <else>
+                                                                                                                            <if expression="opcaoTemp = 2">
+                                                                                                                                <then>
+                                                                                                                                    <output expression="&quot;Digite a temperatura em Fahrenheit: &quot;" newline="True"/>
+                                                                                                                                    <input variable="temperatura"/>
+                                                                                                                                    <assign variable="resultadoTemp" expression="(temperatura - 32) * 5 / 9"/>
+                                                                                                                                    <output expression="&quot;Temperatura em Celsius: &quot; &amp; ToFixed(resultadoTemp, 2)" newline="True"/>
+                                                                                                                                </then>
+                                                                                                                                <else>
+                                                                                                                                    <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe.&quot;" newline="True"/>
+                                                                                                                                </else>
+                                                                                                                            </if>
+                                                                                                                        </else>
+                                                                                                                    </if>
+                                                                                                                </else>
+                                                                                                            </if>
+                                                                                                        </then>
+                                                                                                        <else>
+                                                                                                            <if expression="opcaoCalculadora = 12">
+                                                                                                                <then>
+                                                                                                                    <declare name="tipoMedida, unidadeOrigem, unidadeDestino" type="Integer" array="False" size=""/>
+                                                                                                                    <declare name="valor, fatorOrigem, fatorDestino, valorBase, resultadoConv" type="Real" array="False" size=""/>
+                                                                                                                    <output expression="&quot;Escolha o tipo de medida: [1] Comprimento | [2] &#193;rea | [3] Volume | [4] Massa | [5] Capacidade | [0] para sair&quot;" newline="True"/>
+                                                                                                                    <input variable="tipoMedida"/>
+                                                                                                                    <while expression="tipoMedida &lt; 0 or tipoMedida&gt; 5">
+                                                                                                                        <output expression="&quot;Tipo de medida inv&#225;lido.&quot;" newline="True"/>
+                                                                                                                        <output expression="&quot;Escolha o tipo de medida: [1] Comprimento | [2] &#193;rea | [3] Volume | [4] Massa | [5] Capacidade | [0] para sair&quot;" newline="True"/>
+                                                                                                                        <input variable="tipoMedida"/>
+                                                                                                                    </while>
+                                                                                                                    <if expression="tipoMedida = 0">
+                                                                                                                        <then>
+                                                                                                                            <output expression="&quot;Fim do Programa!&quot;" newline="True"/>
+                                                                                                                        </then>
+                                                                                                                        <else>
+                                                                                                                            <if expression="tipoMedida = 1">
+                                                                                                                                <then>
+                                                                                                                                    <output expression="&quot;Unidade de origem: [1] mm | [2] cm | [3] dm | [4] m | [5] dam | [6] hm | [7] km&quot;" newline="True"/>
+                                                                                                                                    <input variable="unidadeOrigem"/>
+                                                                                                                                    <if expression="unidadeOrigem = 1">
+                                                                                                                                        <then>
+                                                                                                                                            <assign variable="fatorOrigem" expression="0.001"/>
+                                                                                                                                        </then>
+                                                                                                                                        <else>
+                                                                                                                                            <if expression="unidadeOrigem = 2">
+                                                                                                                                                <then>
+                                                                                                                                                    <assign variable="fatorOrigem" expression="0.01"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="unidadeOrigem = 3">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorOrigem" expression="0.1"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeOrigem = 4">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorOrigem" expression="1"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeOrigem = 5">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorOrigem" expression="10"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeOrigem = 6">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorOrigem" expression="100"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeOrigem = 7">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorOrigem" expression="1000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de origem inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                        </else>
+                                                                                                                                    </if>
+                                                                                                                                    <output expression="&quot;Unidade de destino: [1] mm | [2] cm | [3] dm | [4] m | [5] dam | [6] hm | [7] km&quot;" newline="True"/>
+                                                                                                                                    <input variable="unidadeDestino"/>
+                                                                                                                                    <if expression="unidadeDestino = 1">
+                                                                                                                                        <then>
+                                                                                                                                            <assign variable="fatorDestino" expression="0.001"/>
+                                                                                                                                        </then>
+                                                                                                                                        <else>
+                                                                                                                                            <if expression="unidadeDestino = 2">
+                                                                                                                                                <then>
+                                                                                                                                                    <assign variable="fatorDestino" expression="0.01"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="unidadeDestino = 3">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorDestino" expression="0.1"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeDestino = 4">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorDestino" expression="1"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeDestino = 5">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorDestino" expression="10"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeDestino = 6">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorDestino" expression="100"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeDestino = 7">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorDestino" expression="1000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de destino inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                        </else>
+                                                                                                                                    </if>
+                                                                                                                                </then>
+                                                                                                                                <else>
+                                                                                                                                    <if expression="tipoMedida = 2">
+                                                                                                                                        <then>
+                                                                                                                                            <output expression="&quot;Unidade de origem: [1] mm&#178; | [2] cm&#178; | [3] dm&#178; | [4] m&#178; | [5] hectare | [6] km&#178;&quot;" newline="True"/>
+                                                                                                                                            <input variable="unidadeOrigem"/>
+                                                                                                                                            <if expression="unidadeOrigem = 1">
+                                                                                                                                                <then>
+                                                                                                                                                    <assign variable="fatorOrigem" expression="0.000001"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="unidadeOrigem = 2">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorOrigem" expression="0.0001"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeOrigem = 3">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorOrigem" expression="0.01"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeOrigem = 4">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorOrigem" expression="1"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeOrigem = 5">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorOrigem" expression="10000"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeOrigem = 6">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorOrigem" expression="1000000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de origem inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                            <output expression="&quot;Unidade de destino: [1] mm | [2] cm | [3] dm | [4] m | [5] dam | [6] hm | [7] km&quot;" newline="True"/>
+                                                                                                                                            <input variable="unidadeDestino"/>
+                                                                                                                                            <if expression="unidadeDestino = 1">
+                                                                                                                                                <then>
+                                                                                                                                                    <assign variable="fatorDestino" expression="0.000001"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="unidadeDestino = 2">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorDestino" expression="0.0001"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeDestino = 3">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorDestino" expression="0.01"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeDestino = 4">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorDestino" expression="1"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeDestino = 5">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorDestino" expression="10000"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeDestino = 6">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorDestino" expression="1000000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de destino inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                            <output expression="&quot;Digite o valor a converter: &quot;" newline="True"/>
+                                                                                                                                            <input variable="valor"/>
+                                                                                                                                            <assign variable="valorBase" expression="valor * fatorOrigem"/>
+                                                                                                                                            <assign variable="resultadoConv" expression="valorBase / fatorDestino"/>
+                                                                                                                                            <output expression="&quot;Resultado: &quot; &amp; ToFixed(resultadoConv, 4)" newline="True"/>
+                                                                                                                                        </then>
+                                                                                                                                        <else>
+                                                                                                                                            <if expression="tipoMedida = 3">
+                                                                                                                                                <then>
+                                                                                                                                                    <output expression="&quot;Unidade de origem: [1] cm&#179; | [2] dm&#179; | [3] m&#179;&quot;" newline="True"/>
+                                                                                                                                                    <input variable="unidadeOrigem"/>
+                                                                                                                                                    <if expression="unidadeOrigem = 1">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorOrigem" expression="0.000001"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeOrigem = 2">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorOrigem" expression="0.001"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeOrigem = 3">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorOrigem" expression="1"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <output expression="&quot;Unidade de origem inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                    <output expression="&quot;Unidade de destino: [1] cm&#179; | [2] dm&#179; | [3] m&#179;&quot;" newline="True"/>
+                                                                                                                                                    <input variable="unidadeDestino"/>
+                                                                                                                                                    <if expression="unidadeDestino = 1">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="fatorDestino" expression="0.000001"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="unidadeDestino = 2">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorDestino" expression="0.001"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeDestino = 3">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorDestino" expression="1"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <output expression="&quot;Unidade de destino inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                    <output expression="&quot;Digite o valor a converter: &quot;" newline="True"/>
+                                                                                                                                                    <input variable="valor"/>
+                                                                                                                                                    <assign variable="valorBase" expression="valor * fatorOrigem"/>
+                                                                                                                                                    <assign variable="resultadoConv" expression="valorBase / fatorDestino"/>
+                                                                                                                                                    <output expression="&quot;Resultado: &quot; &amp; ToFixed(resultadoConv, 4)" newline="True"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="tipoMedida = 4">
+                                                                                                                                                        <then>
+                                                                                                                                                            <output expression="&quot;Unidade de origem: [1] mg | [2] g | [3] kg | [4] ton&quot;" newline="True"/>
+                                                                                                                                                            <input variable="unidadeOrigem"/>
+                                                                                                                                                            <if expression="unidadeOrigem = 1">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorOrigem" expression="0.000001"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeOrigem = 2">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorOrigem" expression="0.001"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeOrigem = 3">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorOrigem" expression="1"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeOrigem = 4">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorOrigem" expression="1000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de origem inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                            <output expression="&quot;Unidade de destino: [1] mm | [2] cm | [3] dm | [4] m | [5] dam | [6] hm | [7] km&quot;" newline="True"/>
+                                                                                                                                                            <input variable="unidadeDestino"/>
+                                                                                                                                                            <if expression="unidadeDestino = 1">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <assign variable="fatorDestino" expression="0.000001"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else>
+                                                                                                                                                                    <if expression="unidadeDestino = 2">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorDestino" expression="0.001"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeDestino = 3">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorDestino" expression="1"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeDestino = 4">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorDestino" expression="1000"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <output expression="&quot;Unidade de destino inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                </else>
+                                                                                                                                                            </if>
+                                                                                                                                                            <output expression="&quot;Digite o valor a converter: &quot;" newline="True"/>
+                                                                                                                                                            <input variable="valor"/>
+                                                                                                                                                            <assign variable="valorBase" expression="valor * fatorOrigem"/>
+                                                                                                                                                            <assign variable="resultadoConv" expression="valorBase / fatorDestino"/>
+                                                                                                                                                            <output expression="&quot;Resultado: &quot; &amp; ToFixed(resultadoConv, 4)" newline="True"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <if expression="tipoMedida = 5">
+                                                                                                                                                                <then>
+                                                                                                                                                                    <output expression="&quot;Unidade de origem: [1] mL | [2] cL | [3] dL | [4] L | [5] daL | [6] hL | [7] kL&quot;" newline="True"/>
+                                                                                                                                                                    <input variable="unidadeOrigem"/>
+                                                                                                                                                                    <if expression="unidadeOrigem = 1">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorOrigem" expression="0.001"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeOrigem = 2">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorOrigem" expression="0.01"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeOrigem = 3">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorOrigem" expression="0.1"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <if expression="unidadeOrigem = 4">
+                                                                                                                                                                                                <then>
+                                                                                                                                                                                                    <assign variable="fatorOrigem" expression="1"/>
+                                                                                                                                                                                                </then>
+                                                                                                                                                                                                <else>
+                                                                                                                                                                                                    <if expression="unidadeOrigem = 5">
+                                                                                                                                                                                                        <then>
+                                                                                                                                                                                                            <assign variable="fatorOrigem" expression="10"/>
+                                                                                                                                                                                                        </then>
+                                                                                                                                                                                                        <else>
+                                                                                                                                                                                                            <if expression="unidadeOrigem = 6">
+                                                                                                                                                                                                                <then>
+                                                                                                                                                                                                                    <assign variable="fatorOrigem" expression="100"/>
+                                                                                                                                                                                                                </then>
+                                                                                                                                                                                                                <else>
+                                                                                                                                                                                                                    <if expression="unidadeOrigem = 7">
+                                                                                                                                                                                                                        <then>
+                                                                                                                                                                                                                            <assign variable="fatorOrigem" expression="1000"/>
+                                                                                                                                                                                                                        </then>
+                                                                                                                                                                                                                        <else>
+                                                                                                                                                                                                                            <output expression="&quot;Unidade de origem inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                                                        </else>
+                                                                                                                                                                                                                    </if>
+                                                                                                                                                                                                                </else>
+                                                                                                                                                                                                            </if>
+                                                                                                                                                                                                        </else>
+                                                                                                                                                                                                    </if>
+                                                                                                                                                                                                </else>
+                                                                                                                                                                                            </if>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                    <output expression="&quot;Unidade de destino: [1] mL | [2] cL | [3] dL | [4] L | [5] daL | [6] hL | [7] kL&quot;" newline="True"/>
+                                                                                                                                                                    <input variable="unidadeDestino"/>
+                                                                                                                                                                    <if expression="unidadeDestino = 1">
+                                                                                                                                                                        <then>
+                                                                                                                                                                            <assign variable="fatorDestino" expression="0.001"/>
+                                                                                                                                                                        </then>
+                                                                                                                                                                        <else>
+                                                                                                                                                                            <if expression="unidadeDestino = 2">
+                                                                                                                                                                                <then>
+                                                                                                                                                                                    <assign variable="fatorDestino" expression="0.01"/>
+                                                                                                                                                                                </then>
+                                                                                                                                                                                <else>
+                                                                                                                                                                                    <if expression="unidadeDestino = 3">
+                                                                                                                                                                                        <then>
+                                                                                                                                                                                            <assign variable="fatorDestino" expression="0.1"/>
+                                                                                                                                                                                        </then>
+                                                                                                                                                                                        <else>
+                                                                                                                                                                                            <if expression="unidadeDestino = 4">
+                                                                                                                                                                                                <then>
+                                                                                                                                                                                                    <assign variable="fatorDestino" expression="1"/>
+                                                                                                                                                                                                </then>
+                                                                                                                                                                                                <else>
+                                                                                                                                                                                                    <if expression="unidadeDestino = 5">
+                                                                                                                                                                                                        <then>
+                                                                                                                                                                                                            <assign variable="fatorDestino" expression="10"/>
+                                                                                                                                                                                                        </then>
+                                                                                                                                                                                                        <else>
+                                                                                                                                                                                                            <if expression="unidadeDestino = 6">
+                                                                                                                                                                                                                <then>
+                                                                                                                                                                                                                    <assign variable="fatorDestino" expression="100"/>
+                                                                                                                                                                                                                </then>
+                                                                                                                                                                                                                <else>
+                                                                                                                                                                                                                    <if expression="unidadeDestino = 7">
+                                                                                                                                                                                                                        <then>
+                                                                                                                                                                                                                            <assign variable="fatorDestino" expression="1000"/>
+                                                                                                                                                                                                                        </then>
+                                                                                                                                                                                                                        <else>
+                                                                                                                                                                                                                            <output expression="&quot;Unidade de destino inv&#225;lida.&quot;" newline="True"/>
+                                                                                                                                                                                                                        </else>
+                                                                                                                                                                                                                    </if>
+                                                                                                                                                                                                                </else>
+                                                                                                                                                                                                            </if>
+                                                                                                                                                                                                        </else>
+                                                                                                                                                                                                    </if>
+                                                                                                                                                                                                </else>
+                                                                                                                                                                                            </if>
+                                                                                                                                                                                        </else>
+                                                                                                                                                                                    </if>
+                                                                                                                                                                                </else>
+                                                                                                                                                                            </if>
+                                                                                                                                                                        </else>
+                                                                                                                                                                    </if>
+                                                                                                                                                                    <output expression="&quot;Digite o valor a converter: &quot;" newline="True"/>
+                                                                                                                                                                    <input variable="valor"/>
+                                                                                                                                                                    <assign variable="valorBase" expression="valor * fatorOrigem"/>
+                                                                                                                                                                    <assign variable="resultadoConv" expression="valorBase / fatorDestino"/>
+                                                                                                                                                                    <output expression="&quot;Resultado: &quot; &amp; ToFixed(resultadoConv, 4)" newline="True"/>
+                                                                                                                                                                </then>
+                                                                                                                                                                <else/>
+                                                                                                                                                            </if>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                        </else>
+                                                                                                                                    </if>
+                                                                                                                                </else>
+                                                                                                                            </if>
+                                                                                                                        </else>
+                                                                                                                    </if>
+                                                                                                                    <output expression="&quot;Digite o valor a converter: &quot;" newline="True"/>
+                                                                                                                    <input variable="valor"/>
+                                                                                                                    <assign variable="valorBase" expression="valor * fatorOrigem"/>
+                                                                                                                    <assign variable="resultadoConv" expression="valorBase / fatorDestino"/>
+                                                                                                                    <output expression="&quot;Resultado: &quot; &amp; ToFixed(resultadoConv, 4)" newline="True"/>
+                                                                                                                </then>
+                                                                                                                <else>
+                                                                                                                    <if expression="opcaoCalculadora = 13">
+                                                                                                                        <then>
+                                                                                                                            <declare name="opcao" type="Integer" array="False" size=""/>
+                                                                                                                            <declare name="angulo, anguloRad, resultadoTrig" type="Real" array="False" size=""/>
+                                                                                                                            <output expression="&quot;Escolha: [1] Seno | [2] Cosseno | [3] Tangente | [0] para sair&quot;" newline="True"/>
+                                                                                                                            <input variable="opcao"/>
+                                                                                                                            <while expression="opcao &lt; 0 or opcao &gt; 3">
+                                                                                                                                <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe.&quot;" newline="True"/>
+                                                                                                                                <output expression="&quot;Escolha: [1] Seno | [2] Cosseno | [3] Tangente | [0] para sair&quot;" newline="True"/>
+                                                                                                                                <input variable="opcao"/>
+                                                                                                                            </while>
+                                                                                                                            <output expression="&quot;Digite o &#226;ngulo (em graus): &quot;" newline="True"/>
+                                                                                                                            <input variable="angulo"/>
+                                                                                                                            <assign variable="anguloRad" expression="angulo * 3.14159 / 180"/>
+                                                                                                                            <if expression="opcao = 0">
+                                                                                                                                <then>
+                                                                                                                                    <output expression="&quot;Programa encerrado!&quot;" newline="True"/>
+                                                                                                                                </then>
+                                                                                                                                <else>
+                                                                                                                                    <if expression="opcao = 1">
+                                                                                                                                        <then>
+                                                                                                                                            <assign variable="resultadoTrig" expression="SIN(anguloRad)"/>
+                                                                                                                                            <output expression="&quot;Seno de &quot; &amp; angulo &amp; &quot;&#176;: &quot; &amp; ToFixed(resultadoTrig, 4)" newline="True"/>
+                                                                                                                                        </then>
+                                                                                                                                        <else>
+                                                                                                                                            <if expression="opcao = 2">
+                                                                                                                                                <then>
+                                                                                                                                                    <assign variable="resultadoTrig" expression="COS(anguloRad)"/>
+                                                                                                                                                    <output expression="&quot;Cosseno de &quot; &amp; angulo &amp; &quot;&#176;: &quot; &amp; ToFixed(resultadoTrig, 4)" newline="True"/>
+                                                                                                                                                </then>
+                                                                                                                                                <else>
+                                                                                                                                                    <if expression="opcao = 3">
+                                                                                                                                                        <then>
+                                                                                                                                                            <assign variable="resultadoTrig" expression="TAN(anguloRad)"/>
+                                                                                                                                                            <output expression="&quot;Tangente de &quot; &amp; angulo &amp; &quot;&#176;: &quot; &amp; ToFixed(resultadoTrig, 4)" newline="True"/>
+                                                                                                                                                        </then>
+                                                                                                                                                        <else>
+                                                                                                                                                            <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe.&quot;" newline="True"/>
+                                                                                                                                                        </else>
+                                                                                                                                                    </if>
+                                                                                                                                                </else>
+                                                                                                                                            </if>
+                                                                                                                                        </else>
+                                                                                                                                    </if>
+                                                                                                                                </else>
+                                                                                                                            </if>
+                                                                                                                        </then>
+                                                                                                                        <else>
+                                                                                                                            <output expression="&quot;Op&#231;&#227;o errada ou n&#227;o existe.&quot;" newline="True"/>
+                                                                                                                        </else>
+                                                                                                                    </if>
+                                                                                                                </else>
+                                                                                                            </if>
+                                                                                                        </else>
+                                                                                                    </if>
+                                                                                                </else>
+                                                                                            </if>
+                                                                                        </else>
+                                                                                    </if>
+                                                                                </else>
+                                                                            </if>
+                                                                        </else>
+                                                                    </if>
+                                                                </else>
+                                                            </if>
+                                                        </else>
+                                                    </if>
+                                                </else>
+                                            </if>
+                                        </else>
+                                    </if>
+                                </else>
+                            </if>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
