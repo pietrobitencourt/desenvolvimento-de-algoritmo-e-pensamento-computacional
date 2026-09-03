@@ -154,7 +154,7 @@ Desenvolvimento_de_Algoritmos_e_Pensamento_Computacional/
 ### 👤 Identificação do Estudante
 
 - **Nome:** Piêtro Bitencourt Nunes
-- **Disciplina:** Programação de Computadores
+- **Disciplina:** Algoritmo e Pensamento Computacional
 - **GitHub:** [pietrobitencourt](https://github.com/pietrobitencourt)
 - **LinkedIn:** [in/piiettrosz](https://linkedin.com/in/piiettrosz)
 - **Instagram:** [@Piiettrosz](https://instagram.com/Piiettrosz)
@@ -295,7 +295,7 @@ Desenvolvimento_de_Algoritmos_e_Pensamento_Computacional/
 ### 👤 Student Identification
 
 - **Name:** Piêtro Bitencourt Nunes
-- **Course:** Computer Programming
+- **Course:** Algorithms and Computational Thinking
 - **GitHub:** [pietrobitencourt](https://github.com/pietrobitencourt)
 - **LinkedIn:** [in/piiettrosz](https://linkedin.com/in/piiettrosz)
 - **Instagram:** [@Piiettrosz](https://instagram.com/Piiettrosz)
