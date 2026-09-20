@@ -94,6 +94,14 @@ Escolhi utilizar exclusivamente a estrutura **do...while** em todo o programa, t
 
 A diferença entre testar a condição antes ou depois da execução foi especialmente importante na validação do limite: se eu tivesse usado um `while` tradicional (que testa a condição antes de executar o bloco), seria necessário escrever o trecho de leitura do valor duas vezes — uma vez fora do laço, apenas para ter um valor inicial a testar, e outra vez dentro do laço, para repetir a leitura caso o valor fosse inválido. Com o `do...while`, a primeira leitura já acontece naturalmente dentro do próprio laço, e o teste só é feito depois, evitando código duplicado e tornando a lógica mais direta.
 
+### Autor
+
+- **Nome:** Piêtro Bitencourt Nunes
+- **GitHub:** [pietrobitencourt](https://github.com/pietrobitencourt)
+- **LinkedIn:** [in/piiettrosz](https://linkedin.com/in/piiettrosz)
+
+Esta atividade faz parte do repositório [Algoritmos e Pensamento Computacional](../), licenciado sob [MIT](../LICENSE).
+
 <div align="right">
 
 [⬆️ voltar ao topo](#-sistema-inteligente-de-monitoramento-industrial)
@@ -181,6 +189,14 @@ All tests were run with the temperature limit set to **35 °C**, to make compari
 I chose to use exclusively the **do...while** structure throughout the program, both for validating the limit and in the main monitoring loop. This choice is justified by the nature of both problems: in each case, the action of reading a value has to happen **before** there is a condition to test. It is not possible to check whether an input is valid without reading it first, and it is not possible to decide whether monitoring should stop without first processing at least one temperature reading.
 
 The difference between testing the condition before or after execution was especially important when validating the limit: had I used a traditional `while` (which tests the condition before executing the block), I would have needed to write the reading step twice — once outside the loop, just to have an initial value to test, and again inside the loop, to repeat the reading if the value was invalid. With `do...while`, the first reading happens naturally inside the loop itself, and the test only happens afterward, avoiding duplicated code and making the logic more straightforward.
+
+### Author
+
+- **Name:** Piêtro Bitencourt Nunes
+- **GitHub:** [pietrobitencourt](https://github.com/pietrobitencourt)
+- **LinkedIn:** [in/piiettrosz](https://linkedin.com/in/piiettrosz)
+
+This assignment is part of the [Algorithms and Computational Thinking](../) repository, licensed under [MIT](../LICENSE).
 
 <div align="right">
 
