@@ -6,7 +6,7 @@
 [![Flowgorithm](https://img.shields.io/badge/Flowgorithm-4.2-blue?style=flat-square)](http://www.flowgorithm.org/)
 ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Atividades](https://img.shields.io/badge/atividades-2-informational?style=flat-square)
+![Atividades](https://img.shields.io/badge/atividades-3-informational?style=flat-square)
 ![Status](https://img.shields.io/badge/status-em%20andamento-yellow?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
 
@@ -28,6 +28,7 @@ Este diretório reúne as **atividades avaliativas** da disciplina de **Algoritm
 |---|---|:---:|---|
 | [`calculadora-flowgorithm/`](./calculadora-flowgorithm) | Calculadora Universal (Flowgorithm) | Flowgorithm | Calculadora com 27 funções/operações (mínimo de 20 exigido), incluindo cálculo de IMC e de área de figuras geométricas — [ver README da atividade](./calculadora-flowgorithm/README.md) |
 | [`Calculadora_em_C/`](./Calculadora_em_C) | Calculadora Universal (C) | C | Reimplementação em C com 32 operações organizadas em 18 funções, cobrindo toda a lista sugerida no enunciado (raízes, logaritmos, trigonometria, conversões, entre outras) — [ver README da atividade](./Calculadora_em_C/README.md) |
+| [`desafio-monitoramento/`](./desafio-monitoramento) | Sistema de Monitoramento de Temperatura | C | Programa com `do...while` que monitora temperaturas de uma máquina industrial, valida entradas, calcula estatísticas e encerra automaticamente após 3 leituras consecutivas acima do limite — [ver README da atividade](./desafio-monitoramento/README.md) |
 
 > Novas atividades da disciplina serão adicionadas aqui como novas subpastas, cada uma com seu próprio README.
 
@@ -40,9 +41,16 @@ desenvolvimento-de-algoritmo-e-pensamento-computacional/
 ├── calculadora-flowgorithm/
 │   ├── Calculadora_Universal.fprg
 │   └── README.md
-└── Calculadora_em_C/
-    ├── calculadora.c
-    └── README.md
+├── Calculadora_em_C/
+│   ├── calculadora.c
+│   └── README.md
+└── desafio-monitoramento/
+    ├── monitoramento.c
+    ├── README.md
+    └── evidencias/
+        ├── teste01.png
+        ├── teste02.png
+        └── teste03.png
 ```
 
 A licença [MIT](./LICENSE) na raiz vale para todas as atividades deste repositório.
@@ -67,6 +75,7 @@ This directory gathers the **graded assignments** for the **Algorithms and Compu
 |---|---|:---:|---|
 | [`calculadora-flowgorithm/`](./calculadora-flowgorithm) | Universal Calculator (Flowgorithm) | Flowgorithm | A 27-function/operation calculator (minimum of 20 required), including BMI and geometric area calculations — [see assignment README](./calculadora-flowgorithm/README.md#-english) |
 | [`Calculadora_em_C/`](./Calculadora_em_C) | Universal Calculator (C) | C | C reimplementation with 32 operations across 18 functions, covering the entire list suggested in the assignment brief (roots, logarithms, trigonometry, conversions, and more) — [see assignment README](./Calculadora_em_C/README.md#-english) |
+| [`desafio-monitoramento/`](./desafio-monitoramento) | Temperature Monitoring System | C | A `do...while`-driven program that monitors an industrial machine's temperature, validates input, calculates statistics, and automatically shuts down after 3 consecutive readings above the limit — [see assignment README](./desafio-monitoramento/README.md#-english) |
 
 > New assignments for this course will be added here as new subfolders, each with its own README.
 
@@ -79,9 +88,16 @@ desenvolvimento-de-algoritmo-e-pensamento-computacional/
 ├── calculadora-flowgorithm/
 │   ├── Calculadora_Universal.fprg
 │   └── README.md
-└── Calculadora_em_C/
-    ├── calculadora.c
-    └── README.md
+├── Calculadora_em_C/
+│   ├── calculadora.c
+│   └── README.md
+└── desafio-monitoramento/
+    ├── monitoramento.c
+    ├── README.md
+    └── evidencias/
+        ├── teste01.png
+        ├── teste02.png
+        └── teste03.png
 ```
 
 The [MIT](./LICENSE) license at the root applies to all assignments in this repository.
