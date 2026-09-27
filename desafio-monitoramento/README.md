@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌡️ Sistema Inteligente de Monitoramento Industrial
+# 📊 Análise de Vetor em C
 
 ![C](https://img.shields.io/badge/language-C-00599C?style=flat-square&logo=c&logoColor=white)
 ![GCC](https://img.shields.io/badge/compiler-GCC-4EAA25?style=flat-square&logo=gnu&logoColor=white)
@@ -21,78 +21,94 @@
 - **Aluno:** Piêtro Bitencourt Nunes
 - **Disciplina:** Algoritmos e Pensamento Computacional
 - **Professora:** Profa. Karla Sartin
-- **Título do projeto:** Sistema de Monitoramento de Temperatura
+- **Título do projeto:** Atividade: Array (Vetor)
 
 ### 2. Objetivo
 
-O programa resolve o problema de monitorar, em tempo real, a temperatura de uma máquina industrial a partir de leituras sucessivas de um sensor. O sistema permite que o usuário defina um limite de temperatura considerado seguro e, a partir daí, acompanha cada nova leitura verificando se ela ultrapassa esse limite. Caso a máquina apresente **três leituras consecutivas** acima do limite de segurança, o programa entende que há um risco real de superaquecimento e encerra o monitoramento automaticamente, emitindo um alerta. Ao final, é apresentado um relatório com as principais estatísticas do período monitorado.
+O programa tem como objetivo aplicar, em linguagem C, os conceitos de **arrays (vetores)**, estruturas de repetição, estruturas condicionais, entrada de dados e operações matemáticas. Ele lê **20 números inteiros** digitados pelo usuário, armazena todos em um vetor e, a partir dele, calcula a soma dos múltiplos de 3, a média dos números pares, a quantidade de números positivos e negativos, o maior e o menor valor. Ao final, exibe na tela todos os elementos armazenados.
 
 ### 3. Funcionamento do programa
 
-**Como o limite de temperatura é definido:**
-O usuário informa o limite logo no início da execução. O valor precisa ser numérico e estar dentro da faixa de 0 a 200 °C, considerada uma faixa realista para uma máquina industrial. Enquanto o valor informado não for válido, o programa continua pedindo um novo limite.
-
-**Como as leituras são realizadas:**
-Após o limite ser definido, o programa entra em um laço de monitoramento contínuo, pedindo uma temperatura por vez, como se estivesse recebendo os dados de um sensor a cada novo ciclo.
+**Como os números são lidos e armazenados:**
+Um vetor de 20 posições (`int numeros[20]`) guarda os valores digitados. Um laço `for` percorre as posições de 0 a 19, pedindo um número por vez ao usuário, com a mensagem identificando qual é a entrada atual (de 1 a 20).
 
 **Como valores inválidos são tratados:**
-Toda entrada (tanto do limite quanto das temperaturas) passa por validação de tipo, verificando se o valor digitado é realmente numérico. Entradas fora da faixa aceitável (para as temperaturas, de -50 °C a 300 °C) também são rejeitadas. Em ambos os casos, o programa exibe uma mensagem de erro específica, limpa o restante da entrada digitada (para evitar que caracteres residuais afetem a próxima leitura) e solicita o valor novamente, sem contabilizar a leitura inválida em nenhuma estatística.
+Cada leitura é validada pelo valor de retorno do `scanf`. Se o usuário digitar algo que não seja um número inteiro (como `abcd`), o programa exibe uma mensagem de erro, limpa o que sobrou no buffer de entrada com `getchar()` e pede o número novamente, sem avançar para a próxima posição do vetor.
 
-**Como o programa identifica temperaturas acima do limite:**
-Cada leitura válida é comparada diretamente com o limite definido. Se a temperatura for maior que o limite, ela é registrada como uma leitura "acima do limite", tanto no contador geral quanto no contador de sequência consecutiva.
+**Como o vetor é processado:**
+Depois da leitura, um segundo laço `for` percorre o vetor uma única vez e aplica quatro verificações independentes a cada elemento:
 
-**Como funciona a contagem de temperaturas consecutivas:**
-O programa mantém dois contadores independentes: um contador geral, que soma todas as vezes que uma leitura ultrapassou o limite ao longo de todo o monitoramento, e um contador de sequência, que soma apenas enquanto as leituras acima do limite acontecem em sequência ininterrupta. Assim que uma leitura dentro do limite normal é registrada, o contador de sequência é reiniciado (zerado), pois a sequência foi quebrada.
+- **Múltiplo de 3:** se o resto da divisão por 3 for zero, o valor é somado em `somaMultiplos3`.
+- **Par:** se o resto da divisão por 2 for zero, o valor é somado em `somaPares` e o contador `qtdPares` é incrementado.
+- **Positivo ou negativo:** valores maiores que zero incrementam `qtdPositivos` e valores menores que zero incrementam `qtdNegativos`. O valor **zero não é contabilizado em nenhum dos dois**, conforme exigido no enunciado.
+- **Maior e menor:** `maior` e `menor` começam com o primeiro elemento do vetor e são atualizados sempre que um valor superior ou inferior é encontrado.
 
-**Qual condição encerra o monitoramento:**
-O monitoramento pode ser encerrado de duas formas: manualmente, quando o usuário digita o valor sentinela **-999** em qualquer momento (inclusive já na definição do limite, o que interrompe o programa antes mesmo de iniciar as leituras), ou automaticamente, quando o contador de sequência atinge 3 leituras consecutivas acima do limite, indicando uma situação crítica.
+**Como a média dos pares é calculada:**
+A média é a soma dos pares dividida pela quantidade de pares, com conversão para `float` para não perder as casas decimais. Antes de dividir, o programa verifica se existe pelo menos um número par: se `qtdPares` for zero, ele exibe uma mensagem informando que não há pares, evitando a **divisão por zero**.
 
-### 4. Estruturas de repetição utilizadas
+**Como os resultados são exibidos:**
+Os resultados aparecem identificados e organizados, seguidos da listagem de todos os elementos do vetor (`numeros[0]` até `numeros[19]`).
 
-O programa utiliza exclusivamente a estrutura **do...while**, em dois pontos:
+### 4. Estruturas utilizadas
 
-- Na validação do limite de temperatura, repetindo a pergunta enquanto o valor informado não for válido.
-- No laço principal de monitoramento, repetindo a leitura de temperaturas enquanto a variável de controle `monitorando` indicar que o programa deve continuar.
+**Estruturas de repetição:**
 
-A escolha do `do...while` se justifica porque, nos dois casos, a ação (pedir e ler um valor) precisa necessariamente acontecer **antes** de existir algo a testar. Não é possível avaliar se uma entrada é válida sem primeiro lê-la, e não é possível saber se o monitoramento deve continuar sem antes processar pelo menos uma leitura. Se fosse usado um `while` tradicional, seria necessário duplicar o trecho de leitura fora do laço apenas para "alimentar" a condição inicial, o que tornaria o código repetitivo e menos organizado.
+- `for` (leitura): preenche as 20 posições do vetor.
+- `do...while` (validação): repete a leitura de uma posição enquanto a entrada não for um número inteiro válido.
+- `for` (processamento): percorre o vetor para calcular somas, contadores, maior e menor.
+- `for` (exibição): percorre o vetor para mostrar todos os elementos.
+
+O `for` foi escolhido para percorrer o vetor porque o número de repetições é conhecido de antemão (20 posições). Já o `do...while` é adequado na validação porque a leitura precisa acontecer **antes** de haver algo para testar.
+
+**Estruturas condicionais:** `if` independentes para múltiplo de 3, par, maior e menor, e `if / else if` para positivo e negativo (que são mutuamente exclusivos), além do `if / else` que protege a média dos pares contra divisão por zero.
 
 ### 5. Como executar
 
 Compile o programa com o GCC:
 
 ```bash
-gcc monitoramento.c -o monitoramento
+gcc array_vetor.c -o array_vetor
 ```
 
 Em seguida, execute:
 
 ```bash
-./monitoramento
+./array_vetor
 ```
 
-> No Windows, o executável pode ser rodado com `.\monitoramento.exe` no PowerShell.
+> No Windows, o executável pode ser rodado com `.\array_vetor.exe` no PowerShell.
 
 ### 6. Testes realizados
 
-Todos os testes foram realizados com o limite de temperatura definido em **35 °C**, para facilitar a comparação entre os cenários. As evidências completas estão na pasta [`evidencias/`](./evidencias).
+O teste utilizou uma lista de 20 números pensada para cobrir todos os casos do enunciado: valores positivos e negativos, o zero, números pares, múltiplos de 3 e valores extremos. A evidência está na pasta [`evidencias/`](./evidencias).
 
 | Teste | Cenário | Resultado |
 |---|---|---|
-| [Teste 1](./evidencias/teste01.png) | Validação de entradas inválidas | Entradas não numéricas rejeitadas (limite e temperatura); relatório final com 1 leitura válida (15 °C), 0% acima do limite |
-| [Teste 2](./evidencias/teste02.png) | Acima do limite, não consecutivas | Sequência 40, 20, 41, 19, 42 °C; contador de consecutivas reiniciado a cada intercalação; **sem** encerramento automático; 5 leituras, média 32,40 °C, 60% acima do limite |
-| [Teste 3](./evidencias/teste03.png) | Três consecutivas acima do limite | Sequência 40, 41, 42 °C; encerramento automático na terceira leitura; 3 leituras, média 41,00 °C, 100% acima do limite |
+| [Teste 1](./evidencias/01-execucao-programa.png) | Lista com positivos, negativos, zero, pares e múltiplos de 3 | Soma dos múltiplos de 3: 90; média dos pares: 3,64; 12 positivos; 7 negativos; maior 100; menor -100 |
 
-**Teste 1 — Validação de entradas inválidas:** foram testadas entradas não numéricas tanto na definição do limite (`abc`, `//44`) quanto nas leituras de temperatura (`test`, `/33/33/3`), além de uma leitura válida (`15`) e do encerramento manual com `-999`. Todas as entradas inválidas foram corretamente rejeitadas, com mensagem de erro, sem contaminar as leituras seguintes.
+**Exemplo de entrada:**
 
-**Teste 2 — Temperaturas acima do limite, porém não consecutivas:** a sequência 40, 20, 41, 19 e 42 °C intercalou leituras acima e dentro do limite, reiniciando o contador de sequência a cada vez. Como resultado, o programa não encerrou automaticamente, confirmando que o contador de consecutivas funciona corretamente.
+```
+15 -8 7 0 22 -3 9 4 -12 6 11 -20 30 1 -5 18 27 -1 100 -100
+```
 
-**Teste 3 — Três temperaturas consecutivas acima do limite:** a sequência 40, 41 e 42 °C, todas consecutivamente acima do limite, provocou o alerta crítico e o encerramento automático na terceira leitura, sem solicitar uma quarta.
+**Exemplo de saída:**
 
-### Questão final de reflexão
+```
+=== Resultados ===
+Soma dos multiplos de 3: 90
+Media dos numeros pares: 3.64
+Quantidade de positivos: 12
+Quantidade de negativos: 7
+Maior valor: 100
+Menor valor: -100
+```
 
-Escolhi utilizar exclusivamente a estrutura **do...while** em todo o programa, tanto na validação do limite quanto no laço principal de monitoramento. Essa escolha se justifica pela natureza dos dois problemas: em ambos os casos, a ação de ler um valor precisa acontecer **antes** de existir uma condição para testar. Não é possível verificar se uma entrada é válida sem primeiro lê-la, e não é possível decidir se o monitoramento deve parar sem antes processar pelo menos uma leitura de temperatura.
+**Conferência dos resultados:** os múltiplos de 3 (15, 0, -3, 9, -12, 6, 30, 18 e 27) somam 90. Os pares (-8, 0, 22, 4, -12, 6, -20, 30, 18, 100 e -100) são 11 números que somam 40, resultando na média 40 ÷ 11 ≈ 3,64. Com 12 positivos, 7 negativos e 1 zero (que não entra em nenhuma contagem), o total fecha em 20 elementos.
 
-A diferença entre testar a condição antes ou depois da execução foi especialmente importante na validação do limite: se eu tivesse usado um `while` tradicional (que testa a condição antes de executar o bloco), seria necessário escrever o trecho de leitura do valor duas vezes — uma vez fora do laço, apenas para ter um valor inicial a testar, e outra vez dentro do laço, para repetir a leitura caso o valor fosse inválido. Com o `do...while`, a primeira leitura já acontece naturalmente dentro do próprio laço, e o teste só é feito depois, evitando código duplicado e tornando a lógica mais direta.
+**Captura de tela da execução:**
+
+![Execução do programa](./evidencias/01-execucao-programa.png)
 
 ### Autor
 
@@ -104,7 +120,7 @@ Esta atividade faz parte do repositório [Algoritmos e Pensamento Computacional]
 
 <div align="right">
 
-[⬆️ voltar ao topo](#-sistema-inteligente-de-monitoramento-industrial)
+[⬆️ voltar ao topo](#-análise-de-vetor-em-c)
 
 </div>
 
@@ -117,78 +133,94 @@ Esta atividade faz parte do repositório [Algoritmos e Pensamento Computacional]
 - **Student:** Piêtro Bitencourt Nunes
 - **Course:** Algorithms and Computational Thinking
 - **Instructor:** Prof. Karla Sartin
-- **Project title:** Temperature Monitoring System
+- **Project title:** Assignment: Array (Vector)
 
 ### 2. Objective
 
-The program addresses the problem of monitoring, in real time, the temperature of an industrial machine based on successive sensor readings. The system lets the user define a temperature limit considered safe and then tracks each new reading, checking whether it exceeds that limit. If the machine reports **three consecutive readings** above the safety limit, the program treats this as a real overheating risk and automatically stops the monitoring, raising an alert. At the end, a report is displayed with the main statistics of the monitored period.
+The goal of this program is to apply, in C, the concepts of **arrays**, loops, conditional structures, data input, and mathematical operations. It reads **20 integers** entered by the user, stores them all in an array, and from it calculates the sum of the multiples of 3, the average of the even numbers, the count of positive and negative numbers, and the highest and lowest values. At the end, it displays every element stored in the array.
 
 ### 3. How the program works
 
-**How the temperature limit is defined:**
-The user provides the limit right at the start of execution. The value must be numeric and fall within the 0 to 200 °C range, a realistic range for an industrial machine. While the value entered is invalid, the program keeps asking for a new limit.
-
-**How readings are taken:**
-Once the limit is defined, the program enters a continuous monitoring loop, asking for one temperature at a time, as if receiving sensor data on each new cycle.
+**How the numbers are read and stored:**
+A 20-position array (`int numeros[20]`) holds the values entered. A `for` loop goes through positions 0 to 19, asking for one number at a time, with a message identifying the current entry (1 to 20).
 
 **How invalid values are handled:**
-Every input (both the limit and the temperature readings) goes through type validation, checking whether the entered value is actually numeric. Inputs outside the acceptable range (for temperatures, -50 °C to 300 °C) are also rejected. In both cases, the program displays a specific error message, clears any leftover input (to prevent stray characters from affecting the next reading), and asks for the value again, without counting the invalid reading in any statistic.
+Each reading is validated through `scanf`'s return value. If the user enters something that is not an integer (such as `abcd`), the program displays an error message, clears the leftover input from the buffer with `getchar()`, and asks for the number again, without moving on to the next array position.
 
-**How the program identifies temperatures above the limit:**
-Each valid reading is compared directly against the defined limit. If the temperature is greater than the limit, it is logged as a reading "above the limit," both in the overall counter and in the consecutive-streak counter.
+**How the array is processed:**
+After reading, a second `for` loop goes through the array once and applies four independent checks to each element:
 
-**How the consecutive temperature count works:**
-The program keeps two independent counters: an overall counter, which adds up every time a reading exceeded the limit throughout the whole monitoring session, and a streak counter, which only adds up while above-limit readings happen in an unbroken sequence. As soon as a reading within the normal limit is logged, the streak counter is reset to zero, since the sequence was broken.
+- **Multiple of 3:** if the remainder of the division by 3 is zero, the value is added to `somaMultiplos3`.
+- **Even:** if the remainder of the division by 2 is zero, the value is added to `somaPares` and the `qtdPares` counter is incremented.
+- **Positive or negative:** values greater than zero increment `qtdPositivos` and values lower than zero increment `qtdNegativos`. The value **zero is not counted as either**, as required by the assignment.
+- **Highest and lowest:** `maior` and `menor` start with the first element of the array and are updated whenever a higher or lower value is found.
 
-**Which condition ends the monitoring:**
-Monitoring can end in two ways: manually, when the user enters the sentinel value **-999** at any point (including while still defining the limit, which stops the program before any readings even start), or automatically, when the streak counter reaches 3 consecutive readings above the limit, indicating a critical situation.
+**How the average of the even numbers is calculated:**
+The average is the sum of the even numbers divided by how many there are, cast to `float` so decimal places are not lost. Before dividing, the program checks that at least one even number exists: if `qtdPares` is zero, it displays a message saying there are no even numbers, avoiding **division by zero**.
 
-### 4. Loop structures used
+**How the results are displayed:**
+The results are shown labeled and organized, followed by the listing of every array element (`numeros[0]` to `numeros[19]`).
 
-The program relies exclusively on the **do...while** structure, in two places:
+### 4. Structures used
 
-- When validating the temperature limit, repeating the prompt while the entered value is invalid.
-- In the main monitoring loop, repeating the temperature reading while the control variable `monitorando` indicates the program should continue.
+**Loop structures:**
 
-The choice of `do...while` is justified because, in both cases, the action (asking for and reading a value) necessarily has to happen **before** there is anything to test. It is not possible to check whether an input is valid without reading it first, and it is not possible to know whether monitoring should continue without first processing at least one reading. Using a traditional `while` would require duplicating the reading step outside the loop just to "feed" the initial condition, which would make the code repetitive and less organized.
+- `for` (reading): fills the 20 array positions.
+- `do...while` (validation): repeats the reading of a position while the input is not a valid integer.
+- `for` (processing): goes through the array to compute sums, counters, highest and lowest.
+- `for` (display): goes through the array to show every element.
+
+`for` was chosen to traverse the array because the number of iterations is known in advance (20 positions). `do...while` fits the validation because the reading has to happen **before** there is anything to test.
+
+**Conditional structures:** independent `if` statements for multiple of 3, even, highest, and lowest, and `if / else if` for positive and negative (which are mutually exclusive), plus the `if / else` that protects the even-number average against division by zero.
 
 ### 5. How to run
 
 Compile the program with GCC:
 
 ```bash
-gcc monitoramento.c -o monitoramento
+gcc array_vetor.c -o array_vetor
 ```
 
 Then run it:
 
 ```bash
-./monitoramento
+./array_vetor
 ```
 
-> On Windows, the executable can be run with `.\monitoramento.exe` in PowerShell.
+> On Windows, the executable can be run with `.\array_vetor.exe` in PowerShell.
 
 ### 6. Tests performed
 
-All tests were run with the temperature limit set to **35 °C**, to make comparison between scenarios easier. Full evidence is available in the [`evidencias/`](./evidencias) folder.
+The test used a list of 20 numbers designed to cover every case in the assignment: positive and negative values, zero, even numbers, multiples of 3, and extreme values. The evidence is in the [`evidencias/`](./evidencias) folder.
 
 | Test | Scenario | Result |
 |---|---|---|
-| [Test 1](./evidencias/teste01.png) | Invalid input validation | Non-numeric inputs rejected (limit and temperature); final report with 1 valid reading (15 °C), 0% above the limit |
-| [Test 2](./evidencias/teste02.png) | Above limit, not consecutive | Sequence 40, 20, 41, 19, 42 °C; streak counter reset on each interleaving; **no** automatic shutdown; 5 readings, average 32.40 °C, 60% above the limit |
-| [Test 3](./evidencias/teste03.png) | Three consecutive readings above limit | Sequence 40, 41, 42 °C; automatic shutdown on the third reading; 3 readings, average 41.00 °C, 100% above the limit |
+| [Test 1](./evidencias/01-execucao-programa.png) | List with positives, negatives, zero, evens, and multiples of 3 | Sum of multiples of 3: 90; average of evens: 3.64; 12 positives; 7 negatives; highest 100; lowest -100 |
 
-**Test 1 — Invalid input validation:** non-numeric inputs were tested both when defining the limit (`abc`, `//44`) and when entering temperature readings (`test`, `/33/33/3`), along with one valid reading (`15`) and manual shutdown via `-999`. All invalid inputs were correctly rejected, with an error message, without contaminating subsequent readings.
+**Example input:**
 
-**Test 2 — Above the limit, but not consecutive:** the sequence 40, 20, 41, 19, and 42 °C interleaved above-limit and within-limit readings, resetting the streak counter each time. As a result, the program did not shut down automatically, confirming that the consecutive-streak counter works correctly.
+```
+15 -8 7 0 22 -3 9 4 -12 6 11 -20 30 1 -5 18 27 -1 100 -100
+```
 
-**Test 3 — Three consecutive readings above the limit:** the sequence 40, 41, and 42 °C, all consecutively above the limit, triggered the critical alert and automatic shutdown on the third reading, without prompting for a fourth.
+**Example output:**
 
-### Final reflection question
+```
+=== Resultados ===
+Soma dos multiplos de 3: 90
+Media dos numeros pares: 3.64
+Quantidade de positivos: 12
+Quantidade de negativos: 7
+Maior valor: 100
+Menor valor: -100
+```
 
-I chose to use exclusively the **do...while** structure throughout the program, both for validating the limit and in the main monitoring loop. This choice is justified by the nature of both problems: in each case, the action of reading a value has to happen **before** there is a condition to test. It is not possible to check whether an input is valid without reading it first, and it is not possible to decide whether monitoring should stop without first processing at least one temperature reading.
+**Result check:** the multiples of 3 (15, 0, -3, 9, -12, 6, 30, 18, and 27) add up to 90. The even numbers (-8, 0, 22, 4, -12, 6, -20, 30, 18, 100, and -100) are 11 values summing to 40, giving an average of 40 ÷ 11 ≈ 3.64. With 12 positives, 7 negatives, and 1 zero (which is not counted in either), the total comes to 20 elements.
 
-The difference between testing the condition before or after execution was especially important when validating the limit: had I used a traditional `while` (which tests the condition before executing the block), I would have needed to write the reading step twice — once outside the loop, just to have an initial value to test, and again inside the loop, to repeat the reading if the value was invalid. With `do...while`, the first reading happens naturally inside the loop itself, and the test only happens afterward, avoiding duplicated code and making the logic more straightforward.
+**Execution screenshot:**
+
+![Program execution](./evidencias/01-execucao-programa.png)
 
 ### Author
 
@@ -200,7 +232,7 @@ This assignment is part of the [Algorithms and Computational Thinking](../) repo
 
 <div align="right">
 
-[⬆️ back to top](#-sistema-inteligente-de-monitoramento-industrial)
+[⬆️ back to top](#-análise-de-vetor-em-c)
 
 </div>
 
