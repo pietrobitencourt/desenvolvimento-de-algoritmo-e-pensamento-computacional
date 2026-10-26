@@ -117,7 +117,8 @@ Roteador TP-Link Archer | LAB-003 | Sala de Redes
 
 ### 🖼️ Evidência de execução
 
-![Execução do programa](evidencias/execucao.png)
+![Execução do programa](evidencias/cadastrarEquipamento.png)
+![Execução do programa](evidencias/listarEquipamento.png)
 
 ### ✅ Testes realizados
 
