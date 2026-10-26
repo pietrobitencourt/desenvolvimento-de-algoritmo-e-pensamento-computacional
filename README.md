@@ -6,7 +6,7 @@
 [![Flowgorithm](https://img.shields.io/badge/Flowgorithm-4.2-blue?style=flat-square)](http://www.flowgorithm.org/)
 ![C](https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Atividades](https://img.shields.io/badge/atividades-4-informational?style=flat-square)
+![Atividades](https://img.shields.io/badge/atividades-5-informational?style=flat-square)
 ![Status](https://img.shields.io/badge/status-em%20andamento-yellow?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
 
@@ -30,6 +30,7 @@ Este diretório reúne as **atividades avaliativas** da disciplina de **Algoritm
 | [`Calculadora_em_C/`](./Calculadora_em_C) | Calculadora Universal (C) | C | Reimplementação em C com 32 operações organizadas em 18 funções, cobrindo toda a lista sugerida no enunciado (raízes, logaritmos, trigonometria, conversões, entre outras) — [ver README da atividade](./Calculadora_em_C/README.md) |
 | [`desafio-monitoramento/`](./desafio-monitoramento) | Sistema de Monitoramento de Temperatura | C | Programa com `do...while` que monitora temperaturas de uma máquina industrial, valida entradas, calcula estatísticas e encerra automaticamente após 3 leituras consecutivas acima do limite — [ver README da atividade](./desafio-monitoramento/README.md) |
 | [`array-vetor/`](./array-vetor) | Análise de Vetor (Array) | C | Programa que lê 20 números inteiros em um vetor e calcula a soma dos múltiplos de 3, a média dos pares, a quantidade de positivos e negativos e o maior e o menor valor, com validação de entrada — [ver README da atividade](./array-vetor/README.md) |
+| [`cadastro-equipamentos/`](./cadastro-equipamentos) | Cadastro de Equipamentos | C | Programa com menu (cadastrar, listar e sair) que grava o nome, o código e a localização de cada equipamento no arquivo `equipamentos.txt`, preservando os registros existentes, e exibe todos na tela, usando `fopen()`, `fprintf()`, `fgets()` e `fclose()` — [ver README da atividade](./cadastro-equipamentos/README.md) |
 
 > Novas atividades da disciplina serão adicionadas aqui como novas subpastas, cada uma com seu próprio README.
 
@@ -52,11 +53,18 @@ desenvolvimento-de-algoritmo-e-pensamento-computacional/
 │       ├── teste01.png
 │       ├── teste02.png
 │       └── teste03.png
-└── array-vetor/
-    ├── array_vetor.c
+├── array-vetor/
+│   ├── array_vetor.c
+│   ├── README.md
+│   └── evidencias/
+│       └── 01-execucao-programa.png
+└── cadastro-equipamentos/
+    ├── cadastro_equipamentos.c
+    ├── equipamentos.txt
     ├── README.md
     └── evidencias/
-        └── 01-execucao-programa.png
+        ├── cadastrarEquipamento.png
+        └── listarEquipamento.png
 ```
 
 A licença [MIT](./LICENSE) na raiz vale para todas as atividades deste repositório.
@@ -83,6 +91,7 @@ This directory gathers the **graded assignments** for the **Algorithms and Compu
 | [`Calculadora_em_C/`](./Calculadora_em_C) | Universal Calculator (C) | C | C reimplementation with 32 operations across 18 functions, covering the entire list suggested in the assignment brief (roots, logarithms, trigonometry, conversions, and more) — [see assignment README](./Calculadora_em_C/README.md#-english) |
 | [`desafio-monitoramento/`](./desafio-monitoramento) | Temperature Monitoring System | C | A `do...while`-driven program that monitors an industrial machine's temperature, validates input, calculates statistics, and automatically shuts down after 3 consecutive readings above the limit — [see assignment README](./desafio-monitoramento/README.md#-english) |
 | [`array-vetor/`](./array-vetor) | Array Analysis | C | A program that reads 20 integers into an array and calculates the sum of the multiples of 3, the average of the even numbers, the count of positive and negative numbers, and the highest and lowest values, with input validation — [see assignment README](./array-vetor/README.md#-english) |
+| [`cadastro-equipamentos/`](./cadastro-equipamentos) | Equipment Registry | C | A menu-driven program (register, list and exit) that saves each item's name, ID code and location to `equipamentos.txt`, keeping existing records, and displays them all on screen, using `fopen()`, `fprintf()`, `fgets()` and `fclose()` — [see assignment README](./cadastro-equipamentos/README.md#-english) |
 
 > New assignments for this course will be added here as new subfolders, each with its own README.
 
@@ -105,11 +114,18 @@ desenvolvimento-de-algoritmo-e-pensamento-computacional/
 │       ├── teste01.png
 │       ├── teste02.png
 │       └── teste03.png
-└── array-vetor/
-    ├── array_vetor.c
+├── array-vetor/
+│   ├── array_vetor.c
+│   ├── README.md
+│   └── evidencias/
+│       └── 01-execucao-programa.png
+└── cadastro-equipamentos/
+    ├── cadastro_equipamentos.c
+    ├── equipamentos.txt
     ├── README.md
     └── evidencias/
-        └── 01-execucao-programa.png
+        ├── cadastrarEquipamento.png
+        └── listarEquipamento.png
 ```
 
 The [MIT](./LICENSE) license at the root applies to all assignments in this repository.
