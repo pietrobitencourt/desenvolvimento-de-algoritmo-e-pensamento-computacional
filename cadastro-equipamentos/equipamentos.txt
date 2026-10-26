@@ -1,0 +1,3 @@
+Notebook Dell Latitude | LAB-001 | Laboratorio 1
+Projetor Epson X49 | LAB-002 | Laboratorio 2
+Roteador TP-Link Archer | LAB-003 | Sala de Redes
