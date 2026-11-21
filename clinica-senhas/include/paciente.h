@@ -1,7 +1,7 @@
-/*
- * paciente.h
- * Módulo de CADASTRO e CLASSIFICAÇÃO de pacientes.
- */
+/* paciente.h */
+/* Módulo de CADASTRO e CLASSIFICAÇÃO de pacientes. */
+
+
 #ifndef PACIENTE_H
 #define PACIENTE_H
 
@@ -13,4 +13,4 @@ Paciente cadastrarPaciente(void);
 // Devolve CAT_URGENTE, CAT_PREFERENCIAL ou CAT_NORMAL.
 char classificarPaciente(Paciente p);
 
-#endif /* PACIENTE_H */
+#endif
