@@ -39,11 +39,11 @@ typedef struct {
 } Paciente;
 
 
-/* ---------- Uma fila (FIFO) feita com array + índices ---------- */
+/* ---------- Uma fila circular (FIFO) feita com array ---------- */
 typedef struct {
     Paciente itens[MAX_FILA];
     int inicio;                   // posição de quem será chamado
-    int fim;                     // posição onde o próximo entra
+    int quantidade;              // quantos pacientes estão esperando
 } Fila;
 
 
