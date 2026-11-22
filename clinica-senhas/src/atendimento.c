@@ -4,52 +4,86 @@
 #include "entrada.h"
 
 
-/* consultarProxima
- * REGRA: U primeiro; se U vazia, P; se P vazia, N; se todas vazias, '-'.
- * Só consulta: NÃO retira nada da fila. */
-char consultarProxima(const Sistema *sis) {
-    // TODO
-    (void)sis;
-    return '-';
+char consultarProxima(
+    const Sistema *sis
+) {
+    if (quantidadeNaFila(&sis->filaU) > 0) {
+        return CAT_URGENTE;
+    } else if (quantidadeNaFila(&sis->filaP) > 0) {
+        return CAT_PREFERENCIAL;
+    } else if (quantidadeNaFila(&sis->filaN) > 0) {
+        return CAT_NORMAL;
+    } else {
+        return '-';
+    }
 }
 
 
-/*
- * chamarProxima
- * PASSOS:
- *   - se já há alguém em atendimento: avise e saia (operação inválida)
- *   - categoria = consultarProxima(sis)
- *   - se '-': avise "nenhum paciente aguardando" e saia
- *   - desenfileirar da fila da categoria, guardando em sis->atual
- *   - emAtendimento = 1
- *   - mostre "Chamando: <codigo> - <nome>"
- */
-void chamarProxima(Sistema *sis) {
-    // TODO
-    (void)sis;
+void chamarProxima(
+    Sistema *sis
+) {
+    if (sis->emAtendimento != 0) {
+        printf("Finalize o atendimento atual antes de chamar o proximo.\n");
+        return;
+    }
+
+    char cat = consultarProxima(sis);
+    if (cat == '-') {
+        printf("Nenhum paciente aguardando.\n");
+        return;
+    }
+
+    Fila *f = obterFila(sis, cat);
+    if (f == NULL || !desenfileirar(f, &sis->atual)) {
+        printf("Erro: nao foi possivel retirar o paciente da fila.\n");
+        return;
+    }
+
+    sis->emAtendimento = 1;
+    printf("Chamando: %s - %s\n", sis->atual.codigo, sis->atual.nome);
 }
 
-/*
- * finalizarAtendimento
- *   - se ninguém em atendimento: avise e saia (operação inválida)
- *   - emAtendimento = 0
- *   - mostre "Atendimento de <codigo> finalizado"
- * O paciente atendido não volta à fila: ele já saiu dela em desenfileirar.
- */
-void finalizarAtendimento(Sistema *sis) {
-    // TODO
-    (void)sis;
+
+void finalizarAtendimento(
+    Sistema *sis
+) {
+    if (!sis->emAtendimento) {
+        printf("Nenhum atendimento em andamento.\n");
+        return;
+    }
+
+    printf("Atendimento de %s finalizado.\n", sis->atual.codigo);
+    sis->emAtendimento = 0;
 }
 
-/*
- * registrarAtendimento (submenu da opção 02)
- *   1 - Chamar próxima senha
- *   2 - Finalizar atendimento atual
- *   0 - Voltar
- * Laço + switch, parecido com o menu principal. Descreva no README a
- * forma que você escolher.
- */
-void registrarAtendimento(Sistema *sis) {
-    // TODO
-    (void)sis;
+
+void registrarAtendimento(
+    Sistema *sis
+) {
+    char prox = consultarProxima(sis);
+    if (prox == '-') {
+        printf("Nenhuma senha aguardando.\n");
+    } else {
+        printf("Proxima a ser chamada: categoria %c\n", prox);
+    }
+
+    printf("[1] Chamar proxima senha\n");
+    printf("[2] Finalizar atendimento atual\n");
+    printf("[0] Voltar\n");
+
+    int opcao = lerInteiro("Escolha uma opcao: ", 0, 2);
+
+    switch (opcao) {
+        case 1:
+            chamarProxima(sis);
+            break;
+        case 2:
+            finalizarAtendimento(sis);
+            break;
+        case 0:
+            break;
+        default:
+            printf("Opcao invalida! Tente novamente..\n");
+            break;
+    }
 }
