@@ -1,22 +1,18 @@
-/*
- * atendimento.c
- * Etapa 11 do roteiro.
- */
 #include <stdio.h>
 #include "atendimento.h"
 #include "fila.h"
 #include "entrada.h"
 
-/*
- * consultarProxima
+
+/* consultarProxima
  * REGRA: U primeiro; se U vazia, P; se P vazia, N; se todas vazias, '-'.
- * Só consulta: NÃO retira nada da fila.
- */
+ * Só consulta: NÃO retira nada da fila. */
 char consultarProxima(const Sistema *sis) {
     // TODO
     (void)sis;
     return '-';
 }
+
 
 /*
  * chamarProxima
