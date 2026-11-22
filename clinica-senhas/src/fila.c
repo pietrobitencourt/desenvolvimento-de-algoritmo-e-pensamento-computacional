@@ -17,14 +17,14 @@
 void inicializarSistema(
     Sistema *sis
 ) {
-    menset(sis, 0, sizeof(*sis));
+    memset(sis, 0, sizeof(*sis));
 }
 
 
 int filaCheia(
     const Fila *fila
 ) {
-    fila->quantidade == MAX_FILA;
+    return fila->quantidade == MAX_FILA;
 }
 
 
@@ -32,7 +32,7 @@ int enfileirar(
     Fila *fila,
     Paciente p
 ) {
-    if (fila->quantidade == MAX_FILA) {
+    if (filaCheia(fila)) {
         return 0;
     }
     int posicao = (fila->inicio + fila->quantidade) % MAX_FILA;
@@ -59,7 +59,7 @@ int desenfileirar(
 int quantidadeNaFila(
     const Fila *fila
 ) {
-    fila->quantidade;
+    return fila->quantidade;
 }
 
 
