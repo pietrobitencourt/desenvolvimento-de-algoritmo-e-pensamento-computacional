@@ -13,19 +13,19 @@ void inicializarSistema(
 );
 
 // Coloca no fim da fila. Devolve 1 se entrou, 0 se a fila estava cheia.
-int  enfileirar(
+int enfileirar(
     Fila *fila,
     Paciente p
 );
 
 // Tira o primeiro da fila e entrega em *saida. Devolve 1 se tirou, 0 se vazia.
-int  desenfileirar(
+int desenfileirar(
     Fila *fila,
     Paciente *saida
 );
 
 // Quantos pacientes estão esperando.
-int  quantidadeNaFila(
+int quantidadeNaFila(
     const Fila *fila
 );
 
@@ -33,6 +33,11 @@ int  quantidadeNaFila(
 Fila *obterFila(
     Sistema *sis,
     char categoria
+);
+
+// Devolve 1 se a fila está cheia, 0 se ainda tem espaço.
+int filaCheia(
+    const Fila *fila
 );
 
 #endif

@@ -1,56 +1,80 @@
 /*
  * fila.c
- * Etapa 8 do roteiro.
  *
- * Fila FIFO com array + dois índices:
- *   entrar -> guarda em itens[fim] e fim++
- *   sair   -> pega itens[inicio] e inicio++
- *   quantos esperam = fim - inicio
- *   vazia  = inicio == fim
- *   cheia  = fim == MAX_FILA
- * Simule no papel com MAX_FILA = 5 antes de codificar.
+ * Fila circular (FIFO) com array, um índice e um contador:
+ *   inicio     = posição de quem sai primeiro
+ *   quantidade = quantos estão esperando
+ *   entrar -> guarda em itens[(inicio + quantidade) % MAX_FILA] e quantidade++
+ *   sair   -> pega itens[inicio], inicio = (inicio + 1) % MAX_FILA, quantidade--
+ *   vazia  = quantidade == 0
+ *   cheia  = quantidade == MAX_FILA
  */
+
 #include <string.h>
 #include "fila.h"
 
-/*
- * inicializarSistema
- * Uma linha com memset:  memset(sis, 0, sizeof(*sis));
- * (zera a struct inteira, inclusive as três filas, de uma vez)
- */
-void inicializarSistema(Sistema *sis) {
-    // TODO
-    (void)sis;
+
+void inicializarSistema(
+    Sistema *sis
+) {
+    menset(sis, 0, sizeof(*sis));
 }
 
-/* enfileirar: devolve 1 se entrou, 0 se estava cheia. */
-int enfileirar(Fila *fila, Paciente p) {
-    // TODO
-    (void)fila; (void)p;
-    return 0;
+
+int filaCheia(
+    const Fila *fila
+) {
+    fila->quantidade == MAX_FILA;
 }
 
-/* desenfileirar: devolve 1 se tirou alguém (em *saida), 0 se vazia. */
-int desenfileirar(Fila *fila, Paciente *saida) {
-    // TODO
-    (void)fila; (void)saida;
-    return 0;
+
+int enfileirar(
+    Fila *fila,
+    Paciente p
+) {
+    if (fila->quantidade == MAX_FILA) {
+        return 0;
+    }
+    int posicao = (fila->inicio + fila->quantidade) % MAX_FILA;
+    fila->itens[posicao] = p;
+    fila->quantidade++;
+    return 1;
 }
 
-/* quantidadeNaFila: fim - inicio. */
-int quantidadeNaFila(const Fila *fila) {
-    // TODO
-    (void)fila;
-    return 0;
+
+int desenfileirar(
+    Fila *fila,
+    Paciente *saida
+) {
+    if (fila->quantidade == 0) {
+        return 0;
+    }
+    *saida = fila->itens[fila->inicio];
+    fila->inicio = (fila->inicio + 1) % MAX_FILA;
+    fila->quantidade--;
+    return 1;
 }
 
-/*
- * obterFila (opcional, deixa o resto do código mais limpo)
- * Dado 'U', 'P' ou 'N', devolve o ENDEREÇO da fila certa:
- *   return &sis->filaU;  (etc.)  e NULL se a categoria for inválida.
- */
-Fila *obterFila(Sistema *sis, char categoria) {
-    // TODO
-    (void)sis; (void)categoria;
-    return NULL;
+
+int quantidadeNaFila(
+    const Fila *fila
+) {
+    fila->quantidade;
+}
+
+
+Fila *obterFila(
+    Sistema *sis,
+    char categoria
+) {
+    switch (categoria) {
+        case CAT_URGENTE:
+            return &sis->filaU;
+        case CAT_PREFERENCIAL:
+            return &sis->filaP;
+        case CAT_NORMAL:
+            return &sis->filaN;
+        default:
+            return NULL;
+    }
 }
