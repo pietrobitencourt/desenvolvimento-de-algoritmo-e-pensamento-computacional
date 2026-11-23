@@ -1,5 +1,8 @@
 #ignorar o arquivo principal do código de teste:
 /clinica_senhas.c
 
-#ignora a pasta output e seus arquivos:
-output/
+# ignora a pasta output e seus arquivos:
+# output/     -> Deixei no repositório
+
+# ignora a pasta de testes
+testes/

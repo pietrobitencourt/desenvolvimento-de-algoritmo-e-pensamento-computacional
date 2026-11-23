@@ -257,15 +257,29 @@ O parâmetro `-Iinclude` informa ao compilador onde estão os arquivos `.h`. O p
 2. Entre na pasta do projeto com `cd clinica-senhas`.
 3. Execute os comandos de compilação e execução acima.
 
+**Atalho de compilação:** com o repositório aberto na raiz, `Ctrl + Shift + B` executa a tarefa **Compilar clinica-senhas** (definida em `.vscode/tasks.json`). Depois de compilar, execute o programa pelo terminal com `.\output\clinica_senhas`.
+
 <a id="pt-exemplos"></a>
 
 ## 💡 9. Exemplos de utilização
+
+### Menu principal
+
+```
+================
+    | Menu |
+================
+[1] Retirar senha
+[2] Registrar atendimento
+[0] Sair
+================
+Escolha uma opcao:
+```
 
 ### Retirando uma senha
 
 ```
 Escolha uma opcao: 1
-
 === RETIRAR SENHA ===
 Nome: Maria Silva
 Idade: 30
@@ -362,7 +376,10 @@ Emitindo, nesta ordem, `N001`, `N002`, `P001` e `U001`, as chamadas ocorrem na o
 > Capturas feitas com a extensão **TermSnap** do VS Code e salvas na pasta [`evidencias/`](evidencias/).
 
 #### 1. Compilação sem avisos
-![Compilação](evidencias/01-compilacao.png)
+Comando executado e resultado (nenhuma mensagem de aviso ou erro entre eles):
+
+![Comando de compilação](evidencias/01-compilacao.png)
+![Resultado da compilação](evidencias/01b-compilacao-resultado.png)
 
 #### 2. Menu e painel iniciais (nenhuma senha emitida)
 ![Menu e painel vazio](evidencias/02-menu-painel-vazio.png)
@@ -389,13 +406,17 @@ Emitindo, nesta ordem, `N001`, `N002`, `P001` e `U001`, as chamadas ocorrem na o
 ![Finalizar atendimento](evidencias/09-finalizar-atendimento.png)
 
 #### 10. Operações inválidas tratadas
+Em uma única execução: finalizar sem atendimento em andamento, chamar sem ninguém aguardando e chamar com um atendimento em andamento.
+
 ![Operações inválidas](evidencias/10-operacoes-invalidas.png)
 
-#### 11. Validação das entradas
-![Validação de entradas](evidencias/11-validacao-entradas.png)
+#### 11. Validação de entrada no menu
+Opção digitada em branco: o sistema recusa e pede novamente.
+
+![Validação no menu](evidencias/11a-validacao-menu.png)
 
 #### 12. Fila cheia sem consumir número de senha
-*(teste com `MAX_FILA` reduzido temporariamente)*
+Teste com `MAX_FILA` reduzido temporariamente para 2: a terceira senha é recusada e, depois de um atendimento, a próxima senha emitida é `N003` (e não `N004`).
 
 ![Fila cheia](evidencias/12-fila-cheia.png)
 
@@ -535,7 +556,7 @@ So the capacity of **50 patients** (`MAX_FILA`) per category applies to patients
 | File | Function | Description |
 |---|---|---|
 | `entrada.c` | `lerInteiro` | Reads an integer within a range; repeats until valid |
-| `entrada.c` | `lerSimNao` | Reads a `y/n` style answer (`s`/`n`) and returns 1 or 0 |
+| `entrada.c` | `lerSimNao` | Reads a yes/no answer (`s`/`n`) and returns 1 or 0 |
 | `entrada.c` | `lerTexto` | Reads a non-empty text and strips the newline |
 | `paciente.c` | `cadastrarPaciente` | Asks the questions and returns the filled-in patient |
 | `paciente.c` | `classificarPaciente` | Returns `U`, `P` or `N` according to the rules |
@@ -613,15 +634,31 @@ gcc -Wall -Wextra -Iinclude src/*.c -o output/clinica_senhas
 2. Enter the project folder with `cd clinica-senhas`.
 3. Run the build and run commands above.
 
+**Build shortcut:** with the repository opened at its root, `Ctrl + Shift + B` runs the **Compilar clinica-senhas** task (defined in `.vscode/tasks.json`). After building, run the program in the terminal with `.\output\clinica_senhas`.
+
 <a id="en-examples"></a>
 
 ## 💡 9. Usage examples
+
+*(The program interface is in Portuguese.)*
+
+### Main menu
+
+```
+================
+    | Menu |
+================
+[1] Retirar senha
+[2] Registrar atendimento
+[0] Sair
+================
+Escolha uma opcao:
+```
 
 ### Getting a ticket
 
 ```
 Escolha uma opcao: 1
-
 === RETIRAR SENHA ===
 Nome: Maria Silva
 Idade: 30
@@ -635,8 +672,6 @@ Possui condicao de obesidade? (s/n): n
 Possui alguma necessidade especial? (s/n): n
 Sua senha: P001 (Preferencial)
 ```
-
-*(The program interface is in Portuguese.)*
 
 ### Panel with waiting patients
 
@@ -709,7 +744,7 @@ Issuing `N001`, `N002`, `P001` and `U001` in this order, the calls happen in the
 
 | # | Evidence |
 |---|---|
-| 1 | Build with no warnings |
+| 1 | Build command and result, with no warnings |
 | 2 | Initial menu and empty panel |
 | 3 | Priority ticket (pregnant patient) |
 | 4 | Urgent ticket (patient over 80) |
@@ -718,9 +753,9 @@ Issuing `N001`, `N002`, `P001` and `U001` in this order, the calls happen in the
 | 7 | Call respecting priority (Urgent first) |
 | 8 | Arrival order within the same category |
 | 9 | Finishing an appointment |
-| 10 | Invalid operations handled |
-| 11 | Input validation |
-| 12 | Full queue without consuming a ticket number (`MAX_FILA` temporarily reduced) |
+| 10 | Invalid operations handled (finish with nobody being served, call with nobody waiting, call while an appointment is in progress) |
+| 11 | Input validation at the menu (blank option) |
+| 12 | Full queue without consuming a ticket number (`MAX_FILA` temporarily reduced to 2) |
 | 13 | Program exit |
 
 <a id="en-limitations"></a>
