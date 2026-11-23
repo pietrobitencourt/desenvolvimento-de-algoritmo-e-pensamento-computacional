@@ -11,7 +11,7 @@
 ![GCC](https://img.shields.io/badge/GCC-A42E2B?style=flat-square&logo=gnu&logoColor=white)
 ![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
 ![Atividades](https://img.shields.io/badge/atividades-6-informational?style=flat-square)
-![Status](https://img.shields.io/badge/status-em%20andamento-yellow?style=flat-square)
+![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-success?style=flat-square)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)](./LICENSE)
 
 **[🇧🇷 Português](#-português)** • **[🇺🇸 English](#-english)**
