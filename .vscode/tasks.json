@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compilar clinica-senhas",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "-Wall", "-Wextra", "-Iinclude",
+        "src/main.c", "src/entrada.c", "src/paciente.c", "src/fila.c",
+        "src/senha.c", "src/atendimento.c", "src/painel.c",
+        "-o", "output/clinica_senhas"
+      ],
+      "options": { "cwd": "${workspaceFolder}/clinica-senhas" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    }
+  ]
+}

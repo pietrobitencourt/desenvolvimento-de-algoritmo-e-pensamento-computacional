@@ -8,7 +8,7 @@
 
 
 void exibirMenu(void) {
-    printf("================\n");
+    printf("\n================\n");
     printf("    | Menu |    \n");
     printf("================\n");
     printf("[1] Retirar senha\n[2] Registrar atendimento\n[0] Sair\n");
