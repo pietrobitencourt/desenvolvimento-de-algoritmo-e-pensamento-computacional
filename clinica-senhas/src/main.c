@@ -6,7 +6,7 @@
  * Regra da professora: o main() só coordena. Nenhuma lógica pesada aqui.
  */
 
- // * Compilar: gcc -Wall -Wextra -Iinclude src/*.c -o output/clinica_senhas
+// Compilar: gcc -Wall -Wextra -Iinclude src/*.c -o output/clinica_senhas
  
 
 #include <stdio.h>

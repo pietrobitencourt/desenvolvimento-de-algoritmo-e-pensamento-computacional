@@ -12,16 +12,16 @@ void gerarSenha(
 ) {
     switch (p->categoria) {
         case CAT_URGENTE:
-            sis->ultimoU;
-            p->numero;
+            sis->ultimoU++;
+            p->numero = sis->ultimoU;
             break;
         case CAT_PREFERENCIAL:
-            sis->ultimoP;
-            p->numero;
+            sis->ultimoP++;
+            p->numero = sis->ultimoP;
             break;
         case CAT_NORMAL:
-            sis->ultimoN;
-            p->numero;
+            sis->ultimoN++;
+            p->numero = sis->ultimoN;
             break;
         default:
             return;
@@ -33,7 +33,7 @@ void gerarSenha(
 void retirarSenha(
     Sistema *sis
 ) {
-    printf("=== RETIRAR SENHA ===");
+    printf("=== RETIRAR SENHA ===\n");
     Paciente p = cadastrarPaciente();
     p.categoria = classificarPaciente(p);
     Fila *f = obterFila(sis, p.categoria);
