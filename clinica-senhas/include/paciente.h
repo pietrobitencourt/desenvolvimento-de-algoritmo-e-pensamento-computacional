@@ -13,4 +13,8 @@ Paciente cadastrarPaciente(void);
 // Devolve CAT_URGENTE, CAT_PREFERENCIAL ou CAT_NORMAL.
 char classificarPaciente(Paciente p);
 
+// Devolve o nome da categoria: "Urgente", "Preferencial" ou "Normal".
+const char *nomeCategoria(
+    char categoria
+);
 #endif

@@ -44,3 +44,19 @@ char classificarPaciente(
     }
     return CAT_NORMAL;
 }
+
+
+const char *nomeCategoria(
+    char categoria
+) {
+    switch (categoria) {
+        case CAT_URGENTE:
+            return "Urgente";
+        case CAT_PREFERENCIAL:
+            return "Preferencial";
+        case CAT_NORMAL:
+            return "Normal";
+        default:
+            return "Desconhecida";
+    }
+}
