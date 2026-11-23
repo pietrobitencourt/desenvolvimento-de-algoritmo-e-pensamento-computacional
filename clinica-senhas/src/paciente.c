@@ -1,38 +1,46 @@
-/*
- * paciente.c
- * Etapas 5 e 6 do roteiro.
- */
+/* paciente.c */
+
+#include <stdio.h>
 #include <string.h>
 #include "paciente.h"
-#include "entrada.h"     // usa lerTexto, lerInteiro, lerSimNao
+#include "entrada.h"
 
-/*
- * cadastrarPaciente
- * ORDEM DAS PERGUNTAS:
- *   nome -> idade -> gênero ->
- *   SE mulher: gestante? lactante? ->
- *   obesidade? -> necessidade especial?
- * Dica: o memset zera tudo; o que não for perguntado (ex.: gestante de um
- * homem) fica 0 = "não". No fim: return p;
- * NÃO defina categoria nem senha aqui (isso é de outros módulos).
- */
+
 Paciente cadastrarPaciente(void) {
     Paciente p;
     memset(&p, 0, sizeof(p));
-    // TODO
+
+    lerTexto("Nome: ", p.nome, TAM_NOME);
+    p.idade = lerInteiro("Idade: ", 0, 120);
+    
+    printf("Genero: \n[1] Feminino\n[2] Masculino\n");
+    int opcaoGenero = lerInteiro("Genero: ", 1, 2);
+    if (opcaoGenero == 1) {
+        p.genero = 'F';
+    } else {
+        p.genero = 'M';
+    }
+
+    if (p.genero == 'F') {
+        p.gestante = lerSimNao("Esta gestante? (s/n): ");
+        p.lactante = lerSimNao("Esta lactante? (s/n): ");
+    }
+
+    p.obesidade = lerSimNao("Possui condicao de obesidade? (s/n): ");
+    p.necessidadeEspecial = lerSimNao("Possui alguma necessidade especial? (s/n): ");
+
     return p;
 }
 
-/*
- * classificarPaciente
- * A ORDEM dos if / else if é a prioridade:
- *   1) idade > IDADE_URGENTE                                -> CAT_URGENTE
- *   2) gestante, lactante, obesidade ou necessidadeEspecial -> CAT_PREFERENCIAL
- *   3) senão                                                -> CAT_NORMAL
- * Para "ou" em C use ||
- */
-char classificarPaciente(Paciente p) {
-    // TODO
-    (void)p;
+
+char classificarPaciente(
+    Paciente p
+) {
+    if (p.idade > IDADE_URGENTE) {
+        return CAT_URGENTE;
+    }
+    if (p.gestante || p.lactante || p.obesidade || p.necessidadeEspecial) {
+        return CAT_PREFERENCIAL;
+    }
     return CAT_NORMAL;
 }
