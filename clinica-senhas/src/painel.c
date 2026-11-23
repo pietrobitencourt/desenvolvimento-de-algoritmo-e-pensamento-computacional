@@ -3,14 +3,16 @@
 #include <stdio.h>
 #include "painel.h"
 #include "fila.h"
+#include "paciente.h"
+#include "atendimento.h"
 
 
 void exibirMenu(void) {
-    printf("================");
-    printf("    | Menu |    ");
-    printf("================");
+    printf("================\n");
+    printf("    | Menu |    \n");
+    printf("================\n");
     printf("[1] Retirar senha\n[2] Registrar atendimento\n[0] Sair\n");
-    printf("================");
+    printf("================\n");
 }
 
 
